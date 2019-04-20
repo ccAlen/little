@@ -1,0 +1,84 @@
+<!--pages/aiGrade/aiGrade.wxml-->
+<view class='bannerbox'>
+  <image src='../img/banner7.jpg' class='banner' mode='aspectFill'></image>
+  <view class='bannerContent'>
+    <view class='centerbox'>
+      <!-- <view class='starbox'>
+        <view class='star s1'></view>
+        <view class='star s1'></view>
+        <view class='star s2'></view>
+        <view class='star s3'></view>
+      </view> -->
+      <view class='starbox' wx:if="{{record.score == 0}}">
+        <view class='star s2'></view>
+      </view>
+      <view class='starbox' wx:if="{{record.score == 1}}">
+        <view class='star s1'></view>
+      </view>
+      <view class='starbox' wx:if="{{record.score == 2}}">
+        <view class='star s1'></view>
+        <view class='star s1'></view>
+      </view>
+      <view class='starbox' wx:if="{{record.score == 3 || record.score == 4}}">
+        <view class='star s1'></view>
+        <view class='star s1'></view>
+        <view class='star s2'></view>
+      </view>
+      <view class='starbox' wx:if="{{record.score == 5}}">
+        <view class='star s1'></view>
+        <view class='star s1'></view>
+        <view class='star s1'></view>
+      </view>
+      <view class='starbox' wx:if="{{record.score == 6 || record.score == 7}}">
+        <view class='star s1'></view>
+        <view class='star s1'></view>
+        <view class='star s1'></view>
+        <view class='star s2'></view>
+      </view>
+      <view class='starbox' wx:if="{{record.score == 8 || record.score == 9}}">
+        <view class='star s1'></view>
+        <view class='star s1'></view>
+        <view class='star s1'></view>
+        <view class='star s1'></view>
+      </view>
+      <view class='starbox' wx:if="{{record.score == 10}}">
+        <view class='star s1'></view>
+        <view class='star s1'></view>
+        <view class='star s1'></view>
+        <view class='star s1'></view>
+        <view class='star s2'></view>
+      </view>
+      <view class='agT1'>超过全国<text>{{record.percent ? record.percent : '0'}}%</text>的用户</view>
+      <view class='agT2'>当前结果为综合评分，维度主要包括面试反应、问题洞察、岗位理解等</view>
+    </view>
+  </view>
+</view>
+<view class='mainbox'>
+  <view class='btn b1' bindtap='generateCode'>将语音回答生成二维码</view>
+  <view class='btn b2' bindtap='linktoCenter'>完善资料向企业自荐</view>
+  <view class='interflow'>
+    <view class='join' bindtap='joinFun'>
+      <view class='icon i1'></view>
+      <view class='agT3'>加群交流</view>
+    </view>
+
+    <view class='join'>
+      <view class='icon i2'></view>
+      <view class='agT3'>微信分享</view>
+      <button open-type="share" plain="true" class='sharebox'></button> 
+    </view>
+  </view>
+</view>
+<view class='joinBox' wx:if="{{showewm}}">
+  <view class='graybox' bindtap='closeEwm'></view>
+  <image src='../img/ewm.jpg' class='ewmimg' bindtap="previewImage"></image>
+</view>
+<view class='joinBox' wx:if='{{isshowcode}}'>
+  <view class='graybox' bindtap='closeEwm'></view>
+  <image src='{{codepath}}' class='ewmimg1' bindtap="codeImage"></image>
+</view>
+<radioSuspension wx:if="{{isShow}}" id="radio"
+  bind:pauseEvent="_pauseEvent"
+  bind:playEvent="_playEvent"
+  isplay='{{isplay}}'
+></radioSuspension>

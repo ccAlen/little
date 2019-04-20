@@ -1,0 +1,36 @@
+<!--pages/textualAssistant/textualAssistant.wxml--> 
+<view class='textualAssistantbox'>
+  <image src='../img/banner2.jpg' mode='aspectFill' class='banner2'></image>
+  <view class='module2'>
+    <view class='taT1'>你的专业应该考什么证</view>
+    <view class='taT1'>你希望从事的工作</view>
+    <view class='taT1'>企业会对持证的要求是什么</view>
+    <view class='taT1'>持证者的就业差异在哪里</view>
+    <view class='taT1'>10秒免费获知结果</view>
+    <view class='emptybox' wx:if="{{!textRecord.count}}"></view>
+    <view class='taT2' wx:if="{{textRecord.count}}">{{textRecord.count}}人已获知</view>
+    <view class='testAgain' bindtap='textFun' wx:if="{{historyRecord.length > 0}}">再测一次</view>
+    <view class='testAgain' bindtap='textFun' wx:else>我要测试</view>
+    <view class='testHistory'>
+      <view class='thChild' bindtap='urlLinkrecord' wx:if="{{historyRecord.length > 0}}">查看测试记录({{historyRecord.length}})</view>
+    </view>
+  </view>
+    <view class='module' style='margin-bottom:0'>
+    <view class='module_title'>相关动态<navigator url='../newsList/newsList' class='more_icon'></navigator></view>
+    <view bindtap='linkNewsDetails' class='hot_module' wx:for="{{NewsList}}" wx:key="{{item.id}}" data-id='{{item.id}}'>
+      <view class='hot_right'>
+        <image class='img4'  src='{{item.thumb_img}}' mode='aspectFill'></image>
+      </view>
+      <view class='hot_left'>
+        <view class='hlT1'>{{item.title}}</view>
+        <view class='hlT2'>{{item.description}}</view>
+      </view>
+    </view>
+  </view>
+</view> 
+<radioSuspension wx:if="{{isShow}}" id="radio"
+  bind:pauseEvent="_pauseEvent"
+  bind:playEvent="_playEvent"
+  isplay='{{isplay}}'
+></radioSuspension>
+<login id="dialog" wx:if="{{showLogin}}" bind:getKey="getKey"></login>

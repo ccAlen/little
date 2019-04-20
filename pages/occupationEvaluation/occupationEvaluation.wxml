@@ -1,0 +1,118 @@
+<!--pages/occupationEvaluation/occupationEvaluation.wxml--> 
+<view class='reportHeader'>
+  报告大纲
+  <view class='case'>范例</view>
+</view>
+<view class='partList'>
+    <view class='part'>
+      PART 01
+      <view class='partName'>测评报告解读</view>
+    </view>
+    <view class='partContent'>
+      <view class='txtList'>
+        <view class='pcLT1'><text>1.</text>推荐职业方向</view>
+        <view class='pcLT2'>根据你对题目的回答得出你的职业兴趣倾向得分，清晰展示你对职业个性</view>
+      </view>
+      <view class='txtList'>
+        <view class='pcLT1'><text>2.</text>求职建议&发展建议</view>
+        <view class='pcLT2'>根据你对题目的 回答得出你的职业兴趣倾向得分，清晰展示你的职业个性、根据你对题目的 回答得出你的职业兴趣倾向得分，清晰展示你的职业个性一个面。</view>
+      </view>
+    </view>
+</view>
+<view class='test'>
+  <view class='tsT1'>测评结果概述</view>
+  <view class="chart-iframe">
+      <view class='shadow'></view>
+      <canvas disable-scroll="true" style="width:{{myCanvasStyle.width}}px; height: {{myCanvasStyle.height}}px;"  bindtouchstart="myCanvasTouchStart" bindtouchend="myCanvasTouchEnd" canvas-id="myCanvas"></canvas>
+  </view>
+  <view class='labelbox'>
+    <view class='label'>数值结果展示</view>
+  </view>
+</view>
+<view class='barBox'>
+  <view class='barList singular'>
+    <view class='barTxt'>C.传统型<text>2</text></view>
+    <view class='precision'>
+        <view class='bar' style='width:45%'></view>
+      </view>
+  </view>
+  <view class='barList dual'>
+    <view class='barTxt'>C.传统型<text>2</text></view>
+    <view class='precision'>
+        <view class='bar' style='width:45%'></view>
+      </view>
+  </view>
+  <view class='barList singular'>
+    <view class='barTxt'>C.传统型<text>2</text></view>
+    <view class='precision'>
+        <view class='bar' style='width:45%'></view>
+      </view>
+  </view>
+  <view class='barList dual'>
+    <view class='barTxt'>C.传统型<text>2</text></view>
+    <view class='precision'>
+        <view class='bar' style='width:45%'></view>
+      </view>
+  </view>
+  <view class='barList singular'>
+    <view class='barTxt'>C.传统型<text>2</text></view>
+    <view class='precision'>
+        <view class='bar' style='width:45%'></view>
+      </view>
+  </view>
+  <view class='barList dual'>
+    <view class='barTxt'>C.传统型<text>2</text></view>
+    <view class='precision'>
+        <view class='bar' style='width:45%'></view>
+      </view>
+  </view>
+</view>
+<view class='reportResults'>
+  <view class='rrModule'>
+    <view class='rrmT1'>职业风格倾向</view>
+    <view class='rrmT2 padtb1'>具有乐观自信、善于社交沟通、敢冒险、善于分析、注重效率和目标结果的特征</view>
+  </view>
+  <view class='rrModule'>
+    <view class='tsT1'>典型特点概述</view>
+    <view class='rrmT2 padtb2'>测评结果显示，小刺猬同学：</view>
+    <view class='pcLT2'>根据你对题目的 回答得出你的职业兴趣倾向得分，清晰展示你的职业个性、根据你对题目的 回答得出你的职业兴趣倾向得分，清晰展示你的职业个性一个面。</view>
+    <view class='rrmT2 padtb2'>行为风格表现：</view>
+    <view class='pcLT2'>根据你对题目的 回答得出你的职业兴趣倾向得分，清晰展示你的职业个性、根据你对题目的 回答得出你的职业兴趣倾向得分，清晰展示你的职业个性一个面。</view>
+  </view>
+</view>
+<view>
+  <view class='tsT1'>典型特点概述</view>
+  <view class='part matT1'>管理拓展类职业</view>
+  <view class='partContent'>
+    <view class='txtList'>
+      <view class='pcLT1'><text>1.</text>市场/营销</view>
+      <view class='pcLT2'>根据你对题目的回答得出你的职业兴趣倾向得分，清晰展示你对职业个性</view>
+    </view>
+    <view class='txtList'>
+      <view class='pcLT1'><text>2.</text>运营</view>
+      <view class='pcLT2'>根据你对题目的 回答得出你的职业兴趣倾向得分，清晰展示你的职业个性、根据你对题目的 回答得出你的职业兴趣倾向得分，清晰展示你的职业个性一个面。</view>
+    </view>
+  </view>
+  <view class='zsTips'>. . . . . .<view>(仅展示部分结果)</view></view>
+</view>
+<view class='reportResults'>
+  <view class='rrModule'>
+    <view class='tsT1'>职业发展建议</view>
+    <view class='rrmT2 padtb2'>你的职业风格显示：</view>
+    <view class='pcLT2'>1。根据你对题目的 回答得出你的职业兴趣倾向得分，清晰展示你的职业个性、根据你对题目的 回答得出你的职业兴趣倾向得分，清晰展示你的职业个性一个面。</view>
+    <view class='pcLT2'>2.根据你对题目的 回答得出你的职业兴趣倾向得分，清晰展示你的职业个性、根据你对题目的 回答得出你的职业兴趣倾向得分，清晰展示你的职业个性一个面。</view>
+    <view class='pcLT2'>3.根据你对题目的 回答得出你的职业兴趣倾向得分，清晰展示你的职业个性、根据你对题目的 回答得出你的职业兴趣倾向得分，清晰展示你的职业个性一个面。</view>
+    <view class='rrmT2 padtb2'>求职&职业发展建议：</view>
+    <view class='pcLT2'>根据你对题目的 回答得出你的职业兴趣倾向得分，清晰展示你的职业个性、根据你对题目的 回答得出你的职业兴趣倾向得分，清晰展示你的职业个性一个面。</view>
+  </view>
+</view>
+<view class='share'>
+  <view class='shareTips'>报告可在“记录”中查看</view>
+  <image src='../img/weixin.png' class='weixinicon'></image>
+  <view class='shT'>分享给好友</view>
+</view>
+<radioSuspension wx:if="{{isShow}}" id="radio"
+  bind:pauseEvent="_pauseEvent"
+  bind:playEvent="_playEvent"
+  isplay='{{isplay}}'
+></radioSuspension>

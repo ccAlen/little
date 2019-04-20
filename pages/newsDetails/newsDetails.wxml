@@ -1,0 +1,19 @@
+<!--pages/newsDetails/newsDetails.wxml--> 
+<import src="/towxml/entry.wxml"/>
+<view class='newsHeader'>
+  <view class='nhT1'>{{newsDetails.title}}</view>
+  <view class='nhT2'>
+    <text class=''>{{newsDetails.origin}}</text>
+    <text class='nhdata'>{{newsDetails.created_at}}</text>
+  </view>
+</view>
+<template is="entry" data="{{...article}}"/> 
+<view class='zanbox' wx:if="{{newsDetails}}">
+  <view class='zan {{iszan ? " zaned" : ""}}' bindtap='zanFun'></view> 
+  <view class='zancount'>{{favorites_count}}赞</view>
+</view>
+<radioSuspension wx:if="{{isShow}}" id="radio"
+  bind:pauseEvent="_pauseEvent"
+  bind:playEvent="_playEvent"
+  isplay='{{isplay}}'
+></radioSuspension>

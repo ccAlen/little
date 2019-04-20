@@ -1,0 +1,6 @@
+{
+  "navigationBarTitleText": "猩职场",
+  "usingComponents": {
+    "radioSuspension": "../common/radio/radio"
+  }
+}

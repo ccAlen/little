@@ -1,0 +1,16 @@
+/* pages/newsList/newsList.wxss */
+@import "../index/index.wxss";
+page{
+  background: #fff;
+}
+.content{
+  padding: 0 5%;
+  box-sizing: border-box;
+}
+.nothingbox{
+  font-size: 30rpx;
+  color: #666;
+  padding: 30rpx 5%;
+  box-sizing: border-box;
+  text-align: center;
+}

@@ -1,0 +1,116 @@
+<!--pages/courseDetails/courseDetails.wxml-->  
+<wxs module="filter" src="../../utils/secondToDate.wxs"></wxs> 
+<import src="/towxml/entry.wxml"/>
+<view class='bannerbox'>
+  <image src='{{courseDetails.cover_img}}' mode='aspectFill' class='banner'></image>
+  <view class='bannerTxt'>
+    <view class='banT1'>{{courseDetails.title}}</view>
+    <view class='banT2'>{{courseDetails.class_number}}节课·{{filter.secondToDate(courseDetails.duration)}}分钟·{{courseDetails.study_count}}人在学</view>
+    <view class='{{isFavorite ? "collection redHeart" : "collection grayHeart" }}' bindtap='collectionFun'>收藏</view>
+  </view>
+</view>
+<view class='leadingOfficial'>
+  <view class='{{isTeacher ? "leadingNav up" : "leadingNav down"}}' bindtap='teacherSlideFun'>
+    <view class='headerBox'>
+      <image src='{{courseDetails.user.avatar}}' mode='aspectFill' class='headerimg'></image>
+    </view>
+    <view class='leadingTxt'>
+      <view class='name'>{{courseDetails.user.name}}</view>
+      {{courseDetails.user.lecturer_title}}
+    </view>
+  </view>
+  <view class="kind-list-item-bd {{isTeacher ? 'kind-list-item-bd-show' : ''}}">
+    <view class="teacherTxt navigator-box {{isTeacher ? 'navigator-box-show' : ''}}" wx:if="{{courseDetails.user.lecturer_info != ''}}">
+      {{courseDetails.user.lecturer_info}}
+    </view>
+    <view class="teacherTxt navigator-box {{isTeacher ? 'navigator-box-show' : ''}}" wx:else>
+      暂时没有讲师的相关信息
+    </view>
+  </view>
+  <view class='solveBox'>
+    <!-- <view class='module_title'>帮你解决</view> -->
+    <template is="entry" data="{{...article}}"/>
+    <!-- <view class='solveList'>{{courseDetails.description}}</view> -->
+    <!-- <view class='solveList'>排队任务优先级，不再捡了芝麻丢了西瓜</view>
+    <view class='solveList'>排队任务优先级，不再捡了芝麻丢了西瓜</view>
+    <view class='solveList'>排队任务优先级，不再捡了芝麻丢了西瓜</view> -->
+  </view>
+</view>
+<view class='course_module'>
+  <view class='courseTitle'>
+    <view class='shareLeft'>你将听到</view>
+    <view class='shareRight'></view>
+    <!-- <view class='shareRight' wx:if="{{courseDetails.share_unlock == '1'}}"><button class='sharebox' open-type="share" plain="true">分享后解锁课程</button></view> -->
+  </view>
+  <view class='cursebox'>
+    <view class='courseList' wx:for="{{courseDetails.classes}}" wx:key="{{item.id}}" wx:if="{{index<4}}" bindtap="linkBroadcast" data-id='{{item.id}}' data-hasFree='{{item.is_free}}'> 
+      <text class='order'>{{index + 1 < 10 ? ("0" + (index + 1)) : index + 1}}</text>
+      <view class='clT1' style='font-weight:{{item.font_weight==0 ? "normal" : "bold"}}; color:{{item.color == "" ? "#666" : item.color}}'>{{item.class_title}}</view>
+      <view class='clT2'>{{item.time_length}}</view>
+      <view wx:if="{{courseDetails.has_bought == 0}}">
+        <!-- <view class='freeListen' wx:if="{{isShowmode && item.is_free == 1}}">免费试听</view>
+        <view class='lock' wx:if="{{isShowmode && item.is_free == 0}}"></view> -->
+        <view class='freeListen' wx:if="{{item.is_free == 1}}">免费试听</view>
+        <view class='lock' wx:if="{{item.is_free == 0}}"></view>
+      </view>
+      <view class='listingicon' wx:if="{{courseDetails.has_bought == 1}}"></view>
+    </view>
+    <!--超出4个课程样式  -->
+    <view class='develop' wx:if="{{classesNum>4}}">
+      <view class='moreList down' bindtap='slideFun' wx:if="{{!isPullDown}}">展开全部{{classesNum}}节课</view>
+      <view class='moreList up' bindtap='slideFun' wx:if="{{isPullDown}}">收起剩余{{classesNum-4}}节课</view>
+      <view class="kind-list-item-bd {{isPullDown ? 'kind-list-item-bd-show' : ''}}">
+        <view class="courseList navigator-box {{isPullDown ? 'navigator-box-show' : ''}}" wx:for="{{courseDetails.classes}}" wx:key="item.id" wx:if="{{index>=4}}" bindtap="linkBroadcast" data-hasFree='{{item.is_free}}' data-id='{{item.id}}'>
+          <text class='order'>{{index + 1 < 10 ? ("0" + (index + 1)) : index + 1}}</text>
+          <view class='clT1' style='font-weight:{{item.font_weight==0 ? "normal" : "bold"}}; color:{{item.color == "" ? "#666" : item.color}}'>{{item.class_title}}</view>
+          <view class='clT2'>{{item.time_length}}</view>
+          <view wx:if="{{courseDetails.has_bought == 0}}">
+            <view class='freeListen' wx:if="{{item.is_free == 1}}">免费试听</view>
+            <view class='lock' wx:if="{{item.is_free == 0}}"></view>
+          </view>
+          <view class='listingicon' wx:if="{{courseDetails.has_bought == 1}}"></view>
+        </view>
+      </view>
+    </view>
+  </view>
+</view>
+<view class='module1'>
+  <!-- <view class='module_title'>课程简介</view> -->
+  <!-- <view class='courseIntroduction' wx:if="{{courseDetails.course_content != ''}}">{{courseDetails.course_content}}</view> -->
+  <view class='courseIntroduction' wx:if="{{courseDetails.course_content != ''}}"><template is="entry" data="{{...article1}}"/> </view>
+  <view class='courseIntroduction' wx:else>暂时还没课程简介喔~</view>
+</view>
+<view class='gzhimgbox'>
+  <image src='https://xhuser.oss-cn-shenzhen.aliyuncs.com/qrcode.jpeg' mode='aspectFill' class='gzh' bindtap="previewImage"></image>
+</view>
+<view class='bottombox' wx:if="{{courseDetails.has_bought == 0}}">
+  <view wx:if="{{freeClass.length > 0}}" class='freeListenBtn' bindtap='linkBroadcast'  data-id='freeStr'>
+    <image src='../img/f_icon11.png' mode='aspectFill' class='f_icon11'></image>免费试听
+  </view>
+  <view class='purchaseImmediately'>
+    <view class='' wx:if="{{courseDetails.share_unlock == '1'}}"><button class='sharebtn' open-type="share" plain="true"><text class='share_child'>分享到群后解锁</text></button></view>
+    <view class='sharebtn' wx:if="{{courseDetails.share_unlock == '0'}}" bindtap='purchaseFun'>
+      <text class="lineThought pt1" wx:if="{{courseDetails.original_price != courseDetails.current_price}}">￥{{courseDetails.original_price}}</text>
+      <text class="{{isShowmode ? '' : 'lineThought' }}" wx:if="{{courseDetails.charge_mode != '1'}}">￥{{courseDetails.current_price}}</text>
+      立即购买
+      <text wx:if="{{showXianshi}}">(限时免费)</text>
+    </view>
+  </view>
+</view>
+<view class='emptybox' wx:if="{{courseDetails.has_bought == 0}}"></view>
+<login id="dialog" wx:if="{{showLogin}}" bind:getKey="getKey"></login>
+<view class='getphoneBoom' wx:if="{{showGetPhone}}">
+  <view class='shadowbox'>
+    <view class='mainbox'>
+      <view class='buytipstxt'>请授权手机号</view>
+      <view class='btnbox'>
+        <button open-type="getPhoneNumber" bindgetphonenumber="getPhoneNumber" class='btn_child sure'>我知道了</button>
+      </view>
+    </view>
+  </view>
+</view>
+<radioSuspension wx:if="{{isShow}}" id="radio"
+  bind:pauseEvent="_pauseEvent"
+  bind:playEvent="_playEvent"
+  isplay='{{isplay}}'
+></radioSuspension>

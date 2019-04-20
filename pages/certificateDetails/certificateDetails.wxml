@@ -1,0 +1,24 @@
+<!--pages/certificateDetails/certificateDetails.wxml-->
+<import src="/towxml/entry.wxml"/>
+<!-- <template is="entry" data="{{...article}}"/> -->
+<view class='wrap'>
+  <view class='list {{(idindex[index]) ? " addbottomline" : ""}}' wx:for="{{detailsList.content}}" wx:key="{{index}}">
+    <view class='moreList' bindtap='slideFun' data-id='{{index}}'>
+      <view wx:if="{{index + 1 <= 8}}" class='mlChild {{(idindex[index]) ? "upicon" : "downicon"}}'><text class='xl'>{{index + 1}}</text>{{item.title}}</view>
+      <view wx:if="{{index + 1 == 9}}" class='yellowtxt mlChild {{(idindex[index]) ? "upicon" : "downicon"}}'><text class='xl'>{{index + 1}}</text>{{item.title}}</view>
+    </view>
+    <view class="kind-list-item-bd {{(idindex[index]) ? 'kind-list-item-bd-show' : ''}}">
+      <view class="elseList navigator-box {{(idindex[index]) ? 'navigator-box-show' : ''}}">
+        <template is="entry" data="{{...(article[index])}}"/>
+        <!-- {{item.content}} -->
+        <view class='slideUp' data-id='{{index}}' bindtap='slideDownFun'>收起</view>
+      </view>
+    </view>
+  </view>
+</view>
+<view class="backTop" bindtap='backTop' wx:if="{{backTopValue ==true}}"><text class='iconfont icon-top li-ico'></text></view>
+<!-- <radioSuspension wx:if="{{isShow}}" id="radio"
+  bind:pauseEvent="_pauseEvent"
+  bind:playEvent="_playEvent"
+  isplay='{{isplay}}'
+></radioSuspension> -->

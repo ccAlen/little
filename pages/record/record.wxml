@@ -1,0 +1,158 @@
+<!--pages/record/record.wxml-->
+<wxs module="filter" src="../../utils/secondToDate.wxs"></wxs>
+<view class=''>
+  <view class='padlf bgwhite'>
+    <view class='recordNav'>
+      <view class="{{nav == 1 ? 'nav_child nav_selected' : 'nav_child'}}" bindtap='navFun' data-nav='1'>学习记录</view>
+      <!-- <view class="{{nav == 2 ? 'nav_child nav_selected' : 'nav_child'}}" bindtap='navFun' data-nav='2'>就业助手</view> -->
+      <!-- <view class="{{nav == 3 ? 'nav_child nav_selected' : 'nav_child'}}" bindtap='navFun' data-nav='3'>测评记录</view> -->
+      <view class="{{nav == 4 ? 'nav_child nav_selected' : 'nav_child'}}" bindtap='navFun' data-nav='4'>收藏</view>
+    </view>
+  </view>
+  <!--学习记录模块  -->
+  <view class='study' wx:if="{{nav == 1}}">
+    <view class='padlf bgwhite'>
+      <view class='record_time1'>
+        <view class='rt_child'>
+          <view class='rT1'>{{studyInfo.study_length ? studyInfo.study_length : '0'}}分钟</view>
+          <view class='rT2'>学习时长</view>
+        </view>
+        <view class='rt_child'>
+          <view class='rT1'>{{studyInfo.nonstop ? studyInfo.nonstop : '0'}}天</view>
+          <view class='rT2'>连续学习</view>
+        </view>
+      </view>
+      <!-- <view class='linearGraph bgwhite'>
+        <view class='lgT1'>最近7天的学习时长/单位：分钟</view>
+        <view class='lgChild'>
+          <view class="chart-iframe">
+            <canvas disable-scroll="true" style="width:100%; height: 500rpx;" bindtouchstart="myCanvasTouchStart" bindtouchmove="myCanvasTouchMove" bindtouchend="myCanvasTouchEnd" canvas-id="myCanvas"></canvas>
+          </view>
+        </view>
+      </view> -->
+    </view>
+    <view class='graybotbox'></view>
+    <view class='course_module'>
+      <view class='courseTitle'>
+        <view class='shareLeft'>已购</view>
+      </view>
+      <view class='cursebox'>
+        <view wx:if="{{courseDetails.length > 0}}">
+          <navigator url="{{'../courseDetails/courseDetails?courseid=' + item.course_id + '&into=1'}}" class='courseList' wx:for="{{courseDetails}}" wx:key="{{item.id}}" wx:if="{{index<4}}">
+            <view class='radioIcon'></view>
+            <view class='clT1'>{{item.courses.title}}</view>
+            <view class='clT2'>{{item.bought_time}}
+              <text>时长{{item.courses.duration ? item.courses.duration : '0'}}分钟</text>
+            </view>
+            <view class='pointIcon'></view>
+          </navigator>
+          <!--超出4个课程样式  -->
+          <view class='develop' wx:if="{{courseDetails.length>4}}">
+            <view class='moreList down' bindtap='slideFun' wx:if="{{!isPullDown}}">展开全部{{courseDetails.length - 4}}个记录</view>
+            <view class='moreList up' bindtap='slideFun' wx:if="{{isPullDown}}">收起全部{{courseDetails.length - 4}}个记录</view>
+            <view class="kind-list-item-bd {{isPullDown ? 'kind-list-item-bd-show' : ''}}">
+              <navigator url="{{'../courseDetails/courseDetails?courseid=' + item.course_id + '&into=1'}}" class="courseList navigator-box {{isPullDown ? 'navigator-box-show' : ''}}" wx:for="{{courseDetails}}" wx:key="item.id" wx:if="{{index>=4}}">
+                <view class='radioIcon'></view>
+                <view class='clT1'>{{item.courses.title}}</view>
+                <view class='clT2'>{{item.bought_time}}
+                  <text>时长{{item.courses.duration ? item.courses.duration : '0'}}分钟</text>
+                </view>
+                <view class='pointIcon'></view>
+              </navigator>
+            </view>
+          </view>
+        </view>
+        <view class='nonthingbox' wx:else>暂时没有已购课程喔~</view>
+      </view>
+    </view>
+  </view>
+  <!--考证助手模块  -->
+  <view class='helper' wx:if="{{nav == 2}}">
+    <view class='magb padlf bgwhite'>
+      <view wx:if="{{kaozhengList.length > 0}}">
+        <navigator url="{{'../notes/notes?new_search=0&zhuanyeid=' + item.major_id + '&zhiyeid=' + item.prof_id}}" class='record_time record_zs' wx:for="{{kaozhengList}}" wx:key="{{index}}">
+          <view class='listindex'>{{index + 1}}</view>
+          <view class='rzsT1'>{{item.created_at}}建议结果</view>
+          <view class='rzsT2'>我的专业：{{item.major.major_name}}</view>
+          <view class='rzsT2'>就业方向：{{item.profession.prof_name}}</view>
+        </navigator>
+      </view>
+      <view class='nonthingbox' wx:else>暂时没有测试结果喔~</view>
+      <!-- <view class='record_time record_zs'>
+        <view class='listindex'>2</view>
+        <view class='rzsT1'>2018年4月25日建议结果</view>
+        <view class='rzsT2'>我的专业：环境管理工程</view>
+        <view class='rzsT2'>就业方向：互联网产品经理</view>
+      </view> -->
+    </view>
+  </view>
+  <!--测评记录模块  -->
+  <!-- <view class='record' wx:if="{{nav == 3}}">
+    <view class='padlf bgwhite'>
+      <view class='cp_list'>
+        <view class='cpT1'>职业性格测评</view>
+        <view class='cpT2'>
+          <text>未完成</text>
+          <text>免费</text>
+          <text>时间：2018.4.21 20：30</text>
+        </view>
+        <view class='cpStatus fulfil' style='display:block'>去完成</view>
+        <view class='cpStatus check' style='display:none'>查看报告</view>
+      </view>
+      <view class='cp_list'>
+        <view class='cpT1'>职业性格测评</view>
+        <view class='cpT2'>
+          <text>未完成</text>
+          <text>免费</text>
+          <text>时间：2018.4.21 20：30</text>
+        </view>
+        <view class='cpStatus check'>查看报告</view>
+      </view>
+      <view class='cp_list'>
+        <view class='cpT1'>职业性格测评</view>
+        <view class='cpT2'>
+          <text>未完成</text>
+          <text>免费</text>
+          <text>时间：2018.4.21 20：30</text>
+        </view>
+        <view class='cpStatus fulfil' style='display:block'>去完成</view>
+        <view class='cpStatus check' style='display:none'>查看报告</view>
+      </view>
+    </view>
+  </view> -->
+  <!--收藏模块  -->
+  <view class='collect' wx:if="{{nav == 4}}">
+    <view class='module'>
+      <view wx:if="{{favoritesList.length > 0}}">
+        <view class='recommend_module' wx:for="{{favoritesList}}" wx:key="{{item.favorite_id}}">
+          <view class='recommend_left'>
+            <image class='peopleimg' src='{{item.courses.cover_img}}' mode='aspectFill'></image>
+            <view class='xianshi' wx:if="{{item.courses.share_unlock == 1}}"></view>
+          </view>
+          <view bindtap='textualAssistantLink' data-courseid="{{item.courses.id}}" class='recommend_right'>
+            <view class='rlT1'>{{item.courses.title}}
+              <view class='jobMarket'>{{item.courses.category.name}}</view>
+            </view>
+            <view class='rlT2'>
+              <view class='name'>{{item.courses.lecturer.name}}</view>
+              {{item.courses.lecturer.lecturer_title}}
+            </view>
+            <!-- <view class='countbox' wx:if="{{item.share_unlock == 1}}">
+              <view class='count'>限时特惠</view>
+            </view> -->
+            <view class='recommend_bottom'>
+              <view class='time'>{{filter.secondToDate(item.courses.duration)}}分钟</view>
+              <view class='num'>{{item.courses.study_count}}人在学</view>
+              <view class='price'>
+                <view class='grayprice' wx:if="{{item.courses.original_price != item.courses.current_price}}">￥{{item.courses.original_price}}</view>￥{{item.courses.current_price}}</view>
+            </view>
+          </view>
+        </view>
+      </view>
+      <view class='nonthingbox' wx:else>暂时没有收藏喔~</view>
+    </view>
+  </view>
+</view>
+<!-- 播放器悬浮框插件 -->
+<radioSuspension wx:if="{{isShow}}" id="radio" bind:pauseEvent="_pauseEvent" bind:playEvent="_playEvent" isplay='{{isplay}}'></radioSuspension>
+<login id="dialog" wx:if="{{showLogin}}" bind:getKey="getKey"></login>

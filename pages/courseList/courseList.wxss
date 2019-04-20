@@ -1,0 +1,11 @@
+/* pages/courseList/courseList.wxss */
+@import "../index/index.wxss";
+.module {
+  margin-bottom: 0;
+}
+.loadall{
+  text-align: center;
+  font-size: 32rpx;
+  color: #666;
+  padding: 30rpx 0;
+}

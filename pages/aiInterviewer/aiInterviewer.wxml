@@ -1,0 +1,31 @@
+<!--pages/aiInterviewer/aiInterviewer.wxml-->
+<image src='../img/banner5.jpg' class='banner' mode='aspectFill'></image>
+<view class='aiMain'>
+  <view class='ruleTitle'>规则说明</view>
+  <view class='aiT1'>每个岗位5-10道面试题</view>
+  <view class='aiT1'>每道题最多可回答2次</view>
+   <view class='aiT1'>每次可语音作答1分钟</view>
+   <view class='aiT1'>选择目标岗位即可进入面试</view>
+   <view class='goInterviewer' bindtap='goInterviewer'>立即面试</view>
+</view>
+<view class='bottomNav'>
+  <view class='bottomNav_child navselected' bindtap='aiIndex'>
+    <view class='icon c1'></view>
+    <view class='navtxt'>Ai面试官</view>
+  </view>
+  <view class='bottomNav_child' bindtap='aiQuestions'>
+    <view class='icon c2'></view>
+    <view class='navtxt'>常见试题</view>
+  </view>
+  <view class='bottomNav_child' bindtap='aiRecord'>
+    <view class='icon c3'></view>
+    <view class='navtxt'>面试记录</view>
+  </view>
+</view>
+<view class='emptybox12'></view>
+<radioSuspension wx:if="{{isShow}}" id="radio"
+  bind:pauseEvent="_pauseEvent"
+  bind:playEvent="_playEvent"
+  isplay='{{isplay}}'
+></radioSuspension>
+<login id="dialog" wx:if="{{showLogin}}" bind:getKey="getKey"></login>

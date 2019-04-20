@@ -1,0 +1,6 @@
+{
+  "navigationBarTitleText": "就业助手",
+  "usingComponents": {
+    "radioSuspension": "../common/radio/radio"
+  }
+}

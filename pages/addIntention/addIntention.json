@@ -1,0 +1,6 @@
+{
+  "navigationBarTitleText": "编辑求职意愿",
+  "usingComponents": {
+    "radioSuspension": "../common/radio/radio"
+  }
+}

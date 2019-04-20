@@ -1,0 +1,73 @@
+<!--pages/broadcast/broadcast.wxml--> 
+<import src="/towxml/entry.wxml"/>
+<view class='bgview'>
+  <view class='title'>{{courseDetails.class_title}}</view>
+  <view class='headerbox'>
+    <view class='header_child'>
+      <image src='{{courseDetails.class_image}}' class='header' mode='aspectFill'></image>
+    </view>
+  </view>
+   <view class='progressbox'>
+    <view class='fTime'>{{time}}</view>
+    <view class='totalTime'>{{totleTime}}</view>
+   <view class="section section_gap">
+    <view class="body-view">
+      <slider class="sli" step="1" value="{{value}}" max="{{maxlength}}" activeColor="#e1b63c" bindchange="slideBar" block-size="15"/>
+    </view>
+  </view>
+  </view> 
+  <view class='contrlbox'>
+    <view class='contrl_child leftBtn' bindtap='previousFun'></view>
+    <!--播放  -->
+    <view wx:if="{{isplay == 'pause'}}" class='contrl_child stopBtn' bindtap="playAudio"></view>
+    <!--暂停  -->
+    <view wx:else class='contrl_child playBtn' bindtap="pauseAudio"></view>
+    <view class='contrl_child rightBtn' bindtap='nextFun'></view>
+  </view>
+  <view class='broadcastNav'>
+    <view class='bNav_child' bindtap='courseList'><view class='icon1'></view>目录</view>
+    <view class='bNav_child' bindtap='lectureFun'><view class='icon2'></view>讲义</view>
+    <!-- <view class='bNav_child'><view class='icon3'></view>分享</view> -->
+    <button open-type="share" plain="true" class='bNav_child'><view class='icon3'></view>分享</button>
+  </view>
+</view>
+<!--课程列表  -->
+<view wx:if="{{courseShow}}">
+  <view class='closeEmpty' bindtap="courseClose"></view>
+  <view class='courseContent'>
+    <view class='classOver'>
+      <view class='ccT1'>课程目录</view>
+      <view class='courseList' wx:for="{{classList}}" wx:key="{{index}}" bindtap="linkBroadcast" data-id='{{item.id}}' data-hasFree='{{item.is_free}}'>
+        <view class='xuhao'>{{index + 1 >= 10 ? (index + 1) : ("0" + (index + 1))}}</view>
+        <!-- <image src='{{item.class_image}}' class='courseHeader' mode='aspectFill'></image> -->
+        <view class='ccT2'>{{item.class_title}}</view>
+        <view class='ccT3'>{{item.time_length}} <view class='audition' wx:if="{{has_bought == '0' && item.is_free == 1}}">试听</view><view class='lock' wx:if="{{has_bought == '0' && item.is_free == 0}}"></view></view>
+      </view>
+      <!-- <view class='courseList'>
+        <image src='../img/img3.jpg' class='courseHeader' mode='aspectFill'></image>
+        <view class='ccT2'>笔记侠知识整理术教你重构知识体系</view>
+        <view class='ccT3'>16 : 12 <view class='audition'>试听</view></view>
+      </view>
+      <view class='courseList'>
+        <image src='../img/img3.jpg' class='courseHeader' mode='aspectFill'></image>
+        <view class='ccT2'>笔记侠知识整理术教你重构知识体系</view>
+        <view class='ccT3'>16 : 12 <view class='audition'>试听</view></view>
+      </view> -->
+      <!-- <view class='emptybox'></view> -->
+      <view class='closeCourse' bindtap="courseClose">关闭</view>
+    </view>
+  </view>
+</view>
+<!--讲义  -->
+
+<!-- <view class='shadowbox' wx:if="{{islecture}}">
+  <view class='mainbox'>
+    <view class='closeBtn' bindtap='closeLecture'></view>
+    <view class='scroybox'>
+      <template is="entry" data="{{...article}}"/>
+    </view>
+  </view>
+</view> -->
+
+<view wx:if="{{isLogin}}"><login></login></view>
+<!-- <radioSuspension></radioSuspension> -->

@@ -1,0 +1,90 @@
+<!--pages/editMaterial/editMaterial.wxml-->
+<!-- <form bindsubmit="formSubmit"> -->
+<view class='edit_module1'>
+  <view class='editList'>
+    <view class='el_child el1'>头像</view>
+    <view class='el_child el2'><image src='{{avatar}}' mode='aspectFill' class='user_header' bindtap='changeAvatar'></image></view>
+  </view>
+  <view class='editList'>
+    <view class='el_child el1'>姓名</view>
+    <view class='el_child el3'><input placeholder='点击输入' name='usename' class='inp' value='{{userInfo.name}}' bindblur="editName"></input></view>
+  </view>
+  <view class='editList'>
+    <view class='el_child el1'>手机</view>
+    <view class='el_child el3'><input placeholder='点击输入' name='usephone' class='inp' value='{{userInfo.mobile}}' bindblur="editPhone"></input></view>
+  </view>
+  <view class='editList'>
+    <view class='el_child el1'>邮箱</view>
+    <view class='el_child el3'><input placeholder='点击输入' name='useemail' class='inp' value='{{userInfo.email}}' bindblur="editEmail"></input></view>
+  </view>
+  <view class='editList'>
+    <view class='el_child el1'>微信</view>
+    <view class='el_child el3'><input placeholder='（选填项）' name='useweixin' class='inp' value='{{userInfo.wechat}}' bindblur="editWechat"></input></view>
+  </view>
+</view>
+<view class='edit_module1'>
+  <view class='editT1'>工作经历</view>
+  <view class='work'>
+    <view wx:if="{{workExperience.length != 0}}">
+      <view wx:for="{{workExperience}}" wx:key="{{index}}">
+        <view class='editBox'>
+          <view class='ebT1'>{{item.company}}</view>
+          <view class='ebT2'>{{item.position}}<text>{{item.start_time}}-{{item.end_time}}</text></view>
+          <view class='takeEdit' bindtap='editFun' data-id='{{item.id}}' data-edittype='change'></view>
+          <view class='delet' bindtap='deletFun' data-id='{{item.id}}' data-deltype='work'></view>
+          <view class='bindtapbox' bindtap='editFun' data-id='{{item.id}}' data-edittype='change'></view>
+        </view>
+        <view class='workContent'>{{item.description}}</view>
+      </view>
+    </view>
+    <view wx:else class='noneList'>您暂时还没填写工作经历喔~</view>
+    <view class='addContent'><view class='ac_child' bindtap='addWorkFun' data-edittype='add'>添加工作经历</view></view>
+  </view>
+</view>
+<view class='edit_module1'>
+  <view class='editT1'>教育经历</view>
+  <view class='work'>
+    <view wx:if="{{educationalExperience.length != 0}}">
+      <view wx:for="{{educationalExperience}}" wx:key="{{index}}">
+        <view class='editBox'>
+          <view class='ebT1'>{{item.school}}</view>
+          <view class='ebT2'>{{item.major}}<text wx:if="{{item.major != ''}}">,</text>{{item.education}}<text>{{item.start_time}}-{{item.end_time}}</text></view>
+          <view class='takeEdit' bindtap='editFunEdu' data-id='{{item.id}}' data-edittype='change'></view>
+          <view class='delet' bindtap='deletFun' data-id='{{item.id}}' data-deltype='edu'></view>
+          <view class='bindtapbox' bindtap='editFunEdu' data-id='{{item.id}}' data-edittype='change'></view>
+        </view>
+        <view class='workContent'>{{item.description}}</view>
+      </view>
+    </view>
+    <view wx:else class='noneList'>您暂时还没填写教育经历喔~</view>
+    <view class='addContent'><view class='ac_child' bindtap='addEducationFun' data-edittype='add'>添加教育经历</view></view>
+  </view>
+</view>
+<view class='edit_module1'>
+  <view class='editT1'>求职意向</view>
+  <view class='work'>
+    <view wx:if="{{intentionExperience.id}}">
+      <!-- <view wx:for="{{intentionExperience}}" wx:key="{{index}}"> -->
+        <view class='editBox1'>
+          <view class='ebT1'>{{intentionExperience.prof.prof_name}}</view>
+          <view class='ebT2'>{{intentionExperience.salary}}<text>{{intentionExperience.profession_cat}}</text></view>
+          <view class='takeEdit e1' bindtap='editFunInt' data-id='{{item.id}}' data-edittype='change'></view>
+              <!-- <view class='delet' bindtap='deletFun' data-id='{{item.id}}' data-deltype='int'></view> -->
+          <view class='bindtapbox' bindtap='editFunInt' data-id='{{item.id}}' data-edittype='change'></view>
+        </view>
+      <!-- </view> -->
+      <view class='workContent'>{{intentionExperience.description}}</view>
+    </view>
+    <view wx:else>
+      <view class='noneList'>您暂时还没填写求职意向喔~</view>
+      <view class='addContent'><view class='ac_child' bindtap='addIntentionFun' data-edittype='add'>马上添加，让企业更了解你的求职意愿</view></view>
+    </view>
+  </view>
+</view>
+<!-- <view class='btnbox'><button formType="submit" class='keepbtn'>保存</button></view> -->
+<!-- </form> -->
+<radioSuspension wx:if="{{isShow}}" id="radio"
+  bind:pauseEvent="_pauseEvent"
+  bind:playEvent="_playEvent"
+  isplay='{{isplay}}'
+></radioSuspension>

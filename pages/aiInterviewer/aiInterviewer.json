@@ -1,0 +1,7 @@
+{
+  "navigationBarTitleText": "AI面试官",
+  "usingComponents": {
+    "login": "../common/login/login",
+    "radioSuspension": "../common/radio/radio"
+  }
+}

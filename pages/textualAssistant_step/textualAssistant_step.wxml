@@ -1,0 +1,108 @@
+<!--pages/textualAssistant_step/textualAssistant_step.wxml-->
+<view class='module1 borderTop'>
+  <view class='stepbox'>
+    <view class="stepChild {{step == 1 ? ' selected' : ''}}">
+      <view class='step'>1</view>
+      <view class='stepTxt'>输入专业</view>
+    </view>
+    <view class="stepChild {{step == 2 ? ' selected' : ''}}">
+      <view class='step'>2</view>
+      <view class='stepTxt'>输入就业方向</view>
+    </view>
+    <view class="stepChild {{step == 3 ? ' selected' : ''}}">
+      <view class='step'>3</view>
+      <view class='stepTxt'>获得建议</view>
+    </view>
+  </view>
+  <!--步骤一文案  -->
+  <!-- <view class='taT' wx:if="{{step == 1}}">
+    <view class='taT1'>请输入专业关键字</view>
+    <view class='taT1'>并选择你的专业</view>
+  </view> -->
+  <!--步骤二文案  -->
+  <!-- <view class='taT' wx:if="{{step == 2}}">
+    <view class='taT1'>请输入岗位关键字</view>
+    <view class='taT1'>并选择目标就业方向</view>
+  </view> -->
+  <!--步骤二文案  -->
+  <!-- <view class='taT' wx:if="{{step == 3}}">
+    <view class='taT1'>确认选择无误</view>
+    <view class='taT1'>并生成建议结果</view> 
+  </view> -->
+  <!--步骤1  -->
+  <view class='step1' wx:if="{{step == 1}}">
+    <view class='majorbox'>
+      <view class='listbox'>
+         <view class='majorList'>
+          <view class='inpBox'>
+            <input placeholder="请输入专业关键字" class='inp' bindinput="getInputValFun" value='{{specialtyList}}' data-val='{{specialtyList}}' data-type='a' />
+            <view class='closeInp' bindtap='clearTxtFun' data-val='{{specialtyList}}' data-type='zhuanye'></view>
+          </view>
+        </view>
+        <view class='yscroll'>
+          <view class='{{(specialtyList == item.major_name) && zhuanye ? "unfocused" : "unfocus"}}' wx:if="{{searchMajorList.length > 0}}" wx:for="{{searchMajorList}}" wx:key="{{item.id}}" bindtap='onclickListFun' data-list='{{item.major_name}}' data-type='a' data-id="{{item.id}}">{{item.major_name}}</view>
+        </view>
+      </view>
+      <view style='height:100rpx;' wx:if="{{searchMajorList.length <= 0 && specialtyList == ''}}"></view>
+      <!--专业搜索失败  -->
+      <view wx:if="{{searchMajorList.length <= 0 && specialtyList != ''}}">
+        <view class='wrongbox'>
+          <image src='../img/monkey.png' mode='aspectFill' class='wrong'></image>
+        </view>
+        <view class='wrongTxt'>对不起，你的专业暂时没有被收录，请稍后再试。</view>
+        <view class='wrongTxt padB50'>或给我们<navigator class='suggestLink' url="../feedbackSuggestion/feedbackSuggestion">提建议</navigator> ，以便补录。</view>
+      </view>
+    </view>
+    <view class='nextStep' bindtap='nextStep' data-type='a'>下一步</view>
+  </view>
+  <!--步骤2  -->
+  <view class='step2' wx:if="{{step == 2}}">
+    <view class='majorbox'>
+      <view class='listbox'>
+         <view class='majorList'>
+          <view class='inpBox'>
+            <input placeholder="请输入岗位关键字" class='inp' bindinput="getInputValFun" value='{{postName}}' data-val='{{postName}}' data-type='b' />
+            <view class='closeInp' bindtap='clearTxtFun' data-val='{{postName}}' data-type='gangwei'></view>
+          </view>
+        </view>
+        <view class='yscroll'>
+          <view class='{{(postName == item.prof_name) && zhiye ? "unfocused" : "unfocus"}}' wx:if="{{searchMajorList.length > 0}}" wx:for="{{searchMajorList}}" wx:key="{{item.id}}" bindtap='onclickListFun' data-list='{{item.prof_name}}' data-type='b' data-id="{{item.id}}">{{item.prof_name}}</view>
+        </view>
+      </view>
+      <view style='height:100rpx;' wx:if="{{searchMajorList.length <= 0 && postName == ''}}"></view>
+      <!--职业搜索失败  -->
+      <view wx:if="{{searchMajorList.length <= 0 && postName != ''}}">
+        <view class='wrongbox'>
+          <image src='../img/monkey.png' mode='aspectFill' class='wrong'></image>
+        </view>
+        <view class='wrongTxt'>对不起，你的岗位暂时没有被收录，请稍后再试。</view>
+        <view class='wrongTxt padB50'>或给我们<navigator class='suggestLink' url="../feedbackSuggestion/feedbackSuggestion">提建议</navigator> ，以便补录。</view>
+      </view>
+    </view>
+    <view class='nextStep' bindtap='nextStep' data-type='b'>下一步</view>
+  </view>
+   <!--步骤3  -->
+  <view class='step3' wx:if="{{step == 3}}">
+    <view class='majorbox'>
+      <view class='majorList1'>
+        <view class='step3List'>
+          <view class='step3T1'>你的专业</view>
+          <view class='step3T2'>{{specialtyList}}</view>
+        </view>
+        <view class='step3List'>
+          <view class='step3T1'>就业方向</view>
+          <view class='step3T2'>{{postName == '' ? '未选择' : postName}}</view>
+        </view>
+      </view>
+      <view class='emptybox'></view>
+    </view>
+    <!-- <view class='nextStep' bindtap='shareGetResult' wx:if="{{!testRecord}}">分享小程序到微信即可免费查看建议报告</view> -->
+    <view class='nextStep' bindtap='generatingResult' wx:if="{{testRecord}}">支付0.01元获得建议结果</view>
+    <button class='nextStep' open-type="share" plain="true" wx:if="{{!testRecord}}"><text class='share_child'>分享到群后可查看</text></button>
+  </view>
+</view>
+<radioSuspension wx:if="{{isShow}}" id="radio"
+  bind:pauseEvent="_pauseEvent"
+  bind:playEvent="_playEvent"
+  isplay='{{isplay}}'
+></radioSuspension>

@@ -1,0 +1,30 @@
+<!--pages/aiQuestion/aiQuestion.wxml--> 
+<view class='headerbox'>
+  <image src='../img/banner6.jpg' mode='aspectFill' class='ban'></image>
+  <view class='questionContent'>
+    <view class='order'>{{_index}}/{{questionList.length}}</view>
+    <view class='question'>{{question.title}}</view>
+    <image src='../img/monkey1.png' mode='aspectFill' class='monkey'></image>
+  </view>
+</view>
+<view class='bottombox'>
+  <view class='time'>回答时间 <text>{{min}}:{{secs}}</text></view>
+  <view class='mikebox'>
+    <!-- <view class='mike' bindtouchstart='mikeFun' bindtouchend='mikedFun'></view> -->
+    <view class='mike' bindtap='mikeFun'></view>
+    <view class='{{isanimation ? "circle c3" : "hide"}}'></view>
+    <view class='{{isanimation ? "circle c1" : "hide"}}'></view>
+    <view class='{{isanimation ? "circle c2" : "hide"}}'></view>
+  </view>
+  <view class='mikeT1' wx:if="{{replenish == '0' && !isanimation}}">点击说话</view>
+  <view class='mikeT1' wx:if="{{(replenish == '0' || replenish == '1') && isanimation}}">点击停止</view>
+  <!-- <view class='mikeT1' wx:if="{{!isanimation}}">如需补充请继续回答</view> -->
+  <view class='mikeT1' wx:if="{{replenish == '1' && !isanimation}}">如需补充请继续回答</view>
+  <view class='mikeT2' bindtap='nextQuestion' wx:if="{{(_index < questionList.length) && (replenish == '1' || replenish == '2')}}">下一题</view>
+  <view class='mikeT2' bindtap='nextQuestion' wx:if="{{_index >= questionList.length && (replenish == '1' || replenish == '2')}}">点击查看答题结果</view>
+</view>
+<radioSuspension wx:if="{{isShow}}" id="radio"
+  bind:pauseEvent="_pauseEvent"
+  bind:playEvent="_playEvent"
+  isplay='{{isplay}}'
+></radioSuspension> 

@@ -1,0 +1,50 @@
+<!--pages/addEducation/addEducation.wxml-->
+<view class='addbanner'><image src='../img/banner3.jpg' class='addbanimg' mode='aspectFill'></image></view>
+<view class='addTitle'>我的求职意向</view>
+<form bindsubmit="formSubmit">
+<view class='addModule'>
+  <view class='addListbox'>
+    <view class='addList'>
+      <view class='al_child alc1'>行业</view>
+      <view class='al_child alc2'><input placeholder='必填' class='inp' name="hangye" bindfocus='hangyeFun' bindinput='getInputHangyeFun' value='{{profession_cat}}' data-val='{{profession_cat}}'></input></view>
+    </view>
+    <view class='selectBox' wx:if="{{selectShow_hy && searchHangyeList.length > 0}}">
+      <view class='selectList' wx:for="{{searchHangyeList}}" wx:key="{{index}}" bindtap='onclickListFunhy' data-hangye='{{item.cat_name}}' data-id='{{item.id}}'>{{item.cat_name}}</view>
+    </view>
+  </view>
+  <view class='addListbox'>
+    <view class='addList'>
+      <view class='al_child alc1'>职位</view>
+      <view class='al_child alc2'><input placeholder='必填' class='inp' name="zhiwei" bindinput="getInputValFun" bindfocus="hideListFun" value='{{profession}}' data-val='{{profession}}'></input></view>
+    </view>
+    <view class='selectBox' wx:if="{{selectShow && searchMajorList.length > 0}}">
+      <view class='selectList' wx:for="{{searchMajorList}}" wx:key="{{index}}" bindtap='onclickListFun' data-zhiye='{{item.prof_name}}' data-id='{{item.id}}'>{{item.prof_name}}</view>
+    </view>
+  </view>
+  <view class='addListbox'>
+    <view class='addList'>
+      <view class='al_child alc1'>薪资</view>
+      <view class='al_child alc2'><input placeholder='必填' class='inp' name="xinzi" value='{{workInfo.salary}}' bindfocus='schollFocus'></input></view>
+    </view>
+    <!-- <view class='selectBox' wx:if="{{listShow}}">
+      <view class='selectList' data-val='2000以下' bindtap='selectRecord'>2000以下</view>
+      <view class='selectList' data-val='2000~4000' bindtap='selectRecord'>2000~4000</view>
+      <view class='selectList' data-val='4000~8000' bindtap='selectRecord'>4000~8000</view>
+      <view class='selectList' data-val='8000~12000' bindtap='selectRecord'>8000~12000</view>
+      <view class='selectList' data-val='12000以上' bindtap='selectRecord'>12000以上</view>
+    </view> -->
+  </view>
+  
+</view>
+<view class='addTitle'>补充说明</view>
+<view class='describe'>
+  <textarea placeholder="选填" class='areabox describeList' value='{{workInfo.description}}' name="jianbai" bindfocus='descriptionFun' />
+  <!-- <view class='monitextarea' wx:if='{{selectShow_hy || selectShow}}' bindtap='schollFocus'>{{workInfo.description}}</view> -->
+</view>
+<view class='btnbox'><button form-type="submit" class='keepbtn'>保存</button></view>
+</form>
+<radioSuspension wx:if="{{isShow}}" id="radio"
+  bind:pauseEvent="_pauseEvent"
+  bind:playEvent="_playEvent"
+  isplay='{{isplay}}'
+></radioSuspension>

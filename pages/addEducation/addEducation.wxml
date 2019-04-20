@@ -1,0 +1,79 @@
+<!--pages/addEducation/addEducation.wxml-->
+<view class='addbanner'><image src='../img/banner3.jpg' class='addbanimg' mode='aspectFill'></image></view>
+<view class='addTitle'>我的教育经历</view>
+<form bindsubmit="formSubmit">
+<view class='addModule'>
+  <view class='addListbox'>
+    <view class='addList'>
+      <view class='al_child alc1'>学校</view>
+      <view class='al_child alc2'><input placeholder='必填' class='inp' name="school" value='{{workInfo.school}}' bindfocus='schollFocus'></input></view>
+    </view>
+    <!-- <view class='selectBox' style='display:none'>
+      <view class='selectList'>广州大学</view>
+      <view class='selectList'>广州大学</view>
+      <view class='selectList'>广州大学</view>
+    </view> -->
+  </view>
+  <view class='addListbox'>
+    <view class='addList'>
+      <view class='al_child alc1'>专业</view>
+      <view class='al_child alc2'><input placeholder='必填' class='inp' name="major" value='{{workInfo.major}}' bindfocus='schollFocus'></input></view>
+    </view>
+    <!-- <view class='selectBox' style='display:none'>
+      <view class='selectList'>广州大学</view>
+    </view> -->
+  </view>
+  <view class='addListbox'>
+    <view class='addList'>
+      <view class='al_child alc1'>学历</view>
+      <view class='al_child alc2' bindtap="selectRecord"><input placeholder='必填' class='inp' name="record" disabled="false" value='{{record}}'></input></view>
+    </view>
+    <view class='selectBox' wx:if="{{listShow}}">
+      <view class='selectList' data-val='大专' bindtap='selectRecordList'>大专</view>
+      <view class='selectList' data-val='本科' bindtap='selectRecordList'>本科</view>
+      <view class='selectList' data-val='高中/中专' bindtap='selectRecordList'>高中/中专</view>
+      <view class='selectList' data-val='硕士及以上' bindtap='selectRecordList'>硕士及以上</view>
+      <view class='selectList' data-val='初中及以下' bindtap='selectRecordList'>初中及以下</view>
+    </view>
+  </view>
+  <view class='addListbox'>
+    <view class='addList'>
+      <view class='al_child alc1'>开始时间</view>
+      <view class='al_child alc2' bindtap="showDatePicker"><input placeholder='必填' class='inp' value='{{date}}' disabled="false" name="starTime"></input></view>
+    </view>
+  </view>
+  <view class='addListbox'>
+    <view class='addList'>
+      <view class='al_child alc1'>结束时间</view>
+      <view class='al_child alc2' bindtap="showDatePickeredd"><input placeholder='必填' class='inp' value='{{dateedd}}' disabled="false" class='eddTime' name="eddTime"></input></view>
+    </view>
+  </view>
+</view>
+<view class='addTitle'>经历描述</view>
+<view class='describe'>
+  <!-- <view class='describeList'>1、对公司所有重大事务和人事任免进行决策，决策后，权力就下放给具体主管</view>
+  <view class='describeList'>2、营造一种促使员工愿意为公司服务的企业文化</view>
+  <view class='describeList'>3、把公司的整体形象推销出去</view>
+  <view class='tips'>99%的企业更希望通过详细描述了解你</view> -->
+  <textarea hidden="{{listShow}}" placeholder="请描述具体的教育经历" class='areabox describeList' value='{{workInfo.description}}' name="textarea" />
+  <view class='monitextarea' hidden='{{!listShow}}' bindtap='schollFocus'>{{workInfo.description}}</view>
+</view>
+<view class='btnbox'><button form-type="submit" class='keepbtn'>保存</button></view>
+</form>
+<date-picker
+    id="date-picker"
+    value="{{datePickerValue}}" 
+    isShow="{{datePickerIsShow}}"
+    bindsureclick="datePickerOnSureClick"
+    bindcancelclick="datePickerOnCancelClick" />
+  <date-picker
+    id="date-pickeredd"
+    value="{{datePickerValueedd}}" 
+    isShow="{{datePickerIsShowedd}}"
+    bindsureclick="datePickerOnSureClickedd"
+    bindcancelclick="datePickerOnCancelClickedd" />
+<radioSuspension wx:if="{{isShow}}" id="radio"
+  bind:pauseEvent="_pauseEvent"
+  bind:playEvent="_playEvent"
+  isplay='{{isplay}}'
+></radioSuspension>

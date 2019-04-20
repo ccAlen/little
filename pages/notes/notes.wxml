@@ -1,0 +1,80 @@
+<!--pages/notes/notes.wxml-->
+<wxs module="filter" src="../../utils/secondToDate.wxs"></wxs>
+<view class='module'>
+  <view>
+    <view class='module_title_data'>
+      {{recommend.major.major_name}}
+      <view class='have'>专业中约有</view>
+    </view>
+    <view class='tableview_data'>
+      <view class='diplomaList' wx:for="{{recommend.major.certs}}" wx:key="{{item.cert_id}}" data-zsid='{{item.cert_id}}' bindtap='linkCertificateDetails'>
+        <view class='dl_child dl1'>
+          <text>{{item.rate}}%</text>的人考了</view>
+        <view class='dl_child dl2'>
+          <view class='detailsLink'></view>
+        </view>
+        <view class='dl_child dl3'>{{item.cert_name}}</view>
+      </view>
+      <view wx:if="{{recommend.major.professions}}" class='moreList {{isPullDown ? "upicon" : "downicon"}}' bindtap='slideFun'>就业方向参考</view>
+      <view class="kind-list-item-bd {{isPullDown ? 'kind-list-item-bd-show' : ''}}">
+        <view wx:for="{{recommend.major.professions}}" wx:key="{{item.profession_id}}" class="elseList navigator-box {{isPullDown ? 'navigator-box-show' : ''}}" bindtap='occupationLink' data-zsid='{{item.profession_id}}'>
+          <view class='dl_child dl1'>
+            <text>{{item.rate}}%</text>的人从事</view>
+          <view class='dl_child dl2'>
+            <view class='headericon'></view>
+          </view>
+          <view class='dl_child dl3'>{{item.prof_name}}</view>
+        </view>
+      </view>
+    </view>
+  </view>
+  <view>
+    <view wx:if="{{recommend.profs.certs}}" class='module_title_data'>
+      {{recommend.profs.prof_name}}
+      <view class='have'>岗位中约有</view>
+    </view>
+    <view class='tableview_data'>
+      <view class='diplomaList' wx:for="{{recommend.profs.certs}}" wx:key="{{item.cert_id}}" data-zsid='{{item.cert_id}}' bindtap='linkCertificateDetails'>
+        <view class='dl_child dl1'>
+          <text>{{item.rate}}%</text>的人考了</view>
+        <view class='dl_child dl2'>
+          <view class='detailsLink'></view>
+        </view>
+        <view class='dl_child dl3'>{{item.cert_name}}</view>
+      </view>
+    </view>
+  </view>
+  <!-- <view class='tipsTxt'>点击证书名可查看详情</view> -->
+</view>
+<view class='grayemptybox' wx:if="{{courseList.length > 0}}"></view>
+<view class='module' wx:if="{{courseList.length > 0}}">
+  <view class='module_title'>
+    猜你喜欢
+    <navigator url='../courseList/courseList' class='more_icon'></navigator>
+  </view>
+  <view class='recommend_module' wx:for="{{courseList}}" wx:key="{{item.id}}">
+    <view class='recommend_left'>
+      <image class='peopleimg' src='{{item.cover_img}}' mode='aspectFill'></image>
+      <view class='xianshi' wx:if="{{item.share_unlock == 1}}"></view>
+    </view>
+    <navigator url="{{'../courseDetails/courseDetails?courseid=' + item.id + '&into=1'}}" data-courseid="{{item.id}}" class='recommend_right'>
+      <view class='rlT1'>{{item.title}}
+        <view class='jobMarket'>{{item.category.name}}</view>
+      </view>
+      <view class='rlT2'>
+        <view class='name'>{{item.user.name}}</view>
+        {{item.user.lecturer_title}}
+      </view>
+      <!-- <view class='countbox' wx:if="{{item.share_unlock == 1}}">
+        <view class='count'>限时特惠</view>
+      </view> -->
+      <view class='recommend_bottom'>
+        <view class='time'>{{filter.secondToDate(item.duration)}}分钟</view>
+        <view class='num'>{{item.study_count}}人在学</view>
+        <view class='price' wx:if="{{item.share_unlock == 0}}"><view class='grayprice' wx:if="{{item.original_price != item.current_price}}">￥{{item.original_price}}</view>￥{{item.current_price}}</view>
+        <view class='price' wx:if="{{item.share_unlock == 1}}">￥0</view>
+      </view>
+    </navigator>
+  </view>
+</view>
+<radioSuspension wx:if="{{isShow}}" id="radio" bind:pauseEvent="_pauseEvent" bind:playEvent="_playEvent" isplay='{{isplay}}'></radioSuspension>

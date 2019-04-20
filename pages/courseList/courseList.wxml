@@ -1,0 +1,41 @@
+<!--pages/courseList/courseList.wxml-->  
+<wxs module="filter" src="../../utils/secondToDate.wxs"></wxs>
+<swiper indicator-dots="true" autoplay="true" indicator-color='rgba(255,192,0,0.3)' indicator-active-color='rgba(255,192,0,1)'>
+  <block wx:for="{{imgUrls}}" wx:key="{{index}}">
+    <swiper-item>
+      <!-- <image src="{{item.img_uri}}" mode='aspectFill' class='banner' /> -->
+      <navigator url="{{item.show_type == 1 ? item.show_url : ''}}">
+        <image src="{{item.img_uri}}" mode='aspectFill' class='banner'/>
+      </navigator>
+    </swiper-item>
+  </block>
+</swiper>
+<view class='module'>
+  <view class='recommend_module' wx:for="{{recommend}}" wx:key="item.id">
+    <view class='recommend_left'>
+      <image class='peopleimg' src='{{item.cover_img}}' mode='aspectFill'></image>
+      <view class='xianshi' wx:if="{{item.share_unlock == 1}}"></view>
+    </view>
+    <view bindtap='textualAssistantLink' data-courseid="{{item.id}}" class='recommend_right'>
+      <view class='rlT1'>{{item.title}}
+        <view class='jobMarket'>{{item.category.name}}</view>
+      </view>
+      <view class='rlT2'>
+        <view class='name'>{{item.user.name}}</view>
+        {{item.user.lecturer_title}}
+      </view>
+      <!-- <view class='countbox' wx:if="{{item.share_unlock == 1}}">
+        <view class='count'>限时特惠</view>
+      </view> -->
+      <view class='recommend_bottom'>
+        <view class='time'>{{filter.secondToDate(item.duration)}}分钟</view>
+        <view class='num'>{{item.study_count}}人在学</view>
+        <view class='price' wx:if="{{item.share_unlock == 0}}"><view class='grayprice' wx:if="{{item.original_price != item.current_price}}">￥{{item.original_price}}</view>￥{{item.current_price}}</view>
+        <view class='price' wx:if="{{item.share_unlock == 1}}">￥0</view>
+      </view>
+    </view>
+  </view>
+</view>
+<view class='loadall' wx:if="{{!ispulldown}}">加载完毕</view>
+<radioSuspension wx:if="{{isShow}}" id="radio" bind:pauseEvent="_pauseEvent" bind:playEvent="_playEvent" isplay='{{isplay}}'></radioSuspension>
+<login id="dialog" wx:if="{{showLogin}}" bind:getKey="getKey"></login>

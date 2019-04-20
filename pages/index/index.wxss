@@ -1,0 +1,54 @@
+/**index.wxss**/
+page{
+  background: #e8e8e8;
+}
+.moreList{
+  padding: 30rpx 0 10rpx;
+  text-align: center;
+  font-size: 30rpx;
+  color: #666;
+}
+.banner{
+  display: block;
+  width: 750rpx;
+  height: 330rpx;
+}
+.navbox{
+  display: flex;
+  background: #fff;
+  padding: 40rpx 5%;
+  box-sizing: border-box;
+  margin-bottom: 18rpx;
+}
+.nav_child{
+  flex: 1;
+}
+.nav-icon_box{
+  text-align: center;
+}
+.icon1{
+  display: inline-block;
+  width: 72rpx;
+  height: 72rpx;
+}
+.navTxt{
+  font-size: 26rpx;
+  text-align: center;
+}
+.getinfo{
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.5)
+}
+.getbtn{
+  width: 80%;
+  height: 100rpx;
+  text-align: center;
+  margin: 100rpx 10%;
+}
+swiper{
+  height: 330rpx;
+}

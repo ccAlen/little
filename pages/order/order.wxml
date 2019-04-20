@@ -1,0 +1,45 @@
+<!--pages/order/order.wxml-->
+<view class='ordermainbox'>
+  <view class='goodsbox'>
+    <!-- <view class='t1'>商品</view> -->
+    <image class='goodsimg' src='{{courseInfo.cover_img}}' mode='aspectFill'></image>
+    <view class='t2'>{{courseInfo.title}}</view>
+    <view class='orderprice'>￥{{courseInfo.current_price}}</view>
+  </view>
+  <view class='t1'>可用优惠</view>
+  <view class='radiobox' wx:if="{{couponsList.length > 0}}">
+    <radio-group class="radio-group" bindchange="radioChange">
+      <label class="{{item.user_coupon_id == checkedId ? 'radio radioChecked' : 'radio'}}" wx:for="{{couponsList}}" wx:key="index">
+        <radio class='ra' value="{{item.user_coupon_id}}" checked="{{item.checked}}" color="#ffc000"/>
+        <view class='couponvalue'>{{item.coupon_value}}<text>元</text></view>
+        <text class='t3'>{{item.coupon_name}}</text>
+        <text class='date'>{{item.failure_time}}到期</text>
+      </label>
+    </radio-group>
+  </view>
+  <view class='nothingcoupons' wx:else>您暂时没有可用优惠券哟~</view>
+</view>
+<view class='emptybox12'></view>
+<view class='gopaybox'>
+  <view class='child1'>￥{{count}}</view>
+  <view class='child2' bindtap='goPayFun'>马上支付</view>
+</view>
+<!-- 授权手机号弹框 -->
+<view class='loginBoom' hidden="{{!showGetPhone}}">
+  <view class='shadowbox'>
+    <view class='mainbox'>
+      <view class='buytipstxt'>购买成功，请确定进入最后一步</view>
+      <view class='btnbox'>
+        <!-- <button plain="true" class='btn_child' catchtap='concalFun'>取消</button> -->
+        <!-- <button plain="true" open-type="getUserInfo" lang="zh_CN" bindgetuserinfo="onGotUserInfo" class='btn_child sure'>确定</button> -->
+        <button open-type="getPhoneNumber" bindgetphonenumber="getPhoneNumber" class='btn_child sure'>我知道了</button>
+      </view>
+    </view>
+  </view>
+</view>
+<radioSuspension wx:if="{{isShow}}" id="radio"
+  bind:pauseEvent="_pauseEvent"
+  bind:playEvent="_playEvent"
+  isplay='{{isplay}}'
+></radioSuspension>
+<login id="dialog" wx:if="{{showLogin}}" bind:getKey="getKey"></login>

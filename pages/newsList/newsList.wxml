@@ -1,0 +1,18 @@
+<!--pages/newsList/newsList.wxml-->
+<view class='content' wx:if="{{hotNewsList.length > 0}}">
+  <navigator url='{{"../newsDetails/newsDetails?id=" + item.id}}' data-id='{{item.id}}' class='hot_module' wx:for="{{hotNewsList}}" wx:key="{{item.id}}">
+    <view class='hot_left'>
+      <view class='hlT1'>{{item.title}}</view>
+      <view class='hlT2'>{{item.description}}</view>
+    </view>
+    <view class='hot_right'>
+      <image class='hotimg'  src='{{item.thumb_img}}' mode='aspectFill'></image>
+    </view>
+  </navigator>
+</view>
+<view class='nothingbox' wx:else>暂时还没有资讯内容哟~</view>
+<radioSuspension wx:if="{{isShow}}" id="radio"
+  bind:pauseEvent="_pauseEvent"
+  bind:playEvent="_playEvent"
+  isplay='{{isplay}}'
+></radioSuspension>

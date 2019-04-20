@@ -1,0 +1,15 @@
+<!--pages/goldDetail/goldDetail.wxml-->
+<view class='goldbox'>
+  <view class='goldList' wx:for="{{goldList}}" wx:key="{{index}}"> 
+    <view class='gl_child glc1'>
+      <view class='glT1'>{{item.source}}</view>
+      <view class='glT2'>{{item.created_at}}</view>
+    </view>
+    <view class='gl_child glc2'>+{{item.coin_number}}</view>
+  </view>
+</view>
+<radioSuspension wx:if="{{isShow}}" id="radio"
+  bind:pauseEvent="_pauseEvent"
+  bind:playEvent="_playEvent"
+  isplay='{{isplay}}'
+></radioSuspension>

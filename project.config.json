@@ -1,0 +1,76 @@
+{
+	"description": "项目配置文件。",
+	"setting": {
+		"urlCheck": true,
+		"es6": true,
+		"postcss": true,
+		"minified": true,
+		"newFeature": true
+	},
+	"compileType": "miniprogram",
+	"libVersion": "2.2.5",
+	"appid": "wxd5a13b1c48590bb1",
+	"projectname": "%E7%8C%A9%E8%81%8C%E5%9C%BA",
+	"condition": {
+		"search": {
+			"current": -1,
+			"list": []
+		},
+		"conversation": {
+			"current": -1,
+			"list": []
+		},
+		"plugin": {
+			"current": -1,
+			"list": []
+		},
+		"game": {
+			"list": []
+		},
+		"miniprogram": {
+			"current": 4,
+			"list": [
+				{
+					"id": 0,
+					"name": "分享",
+					"pathName": "pages/courseDetails/courseDetails",
+					"query": "",
+					"scene": "1044",
+					"shareInfo": {
+						"groupName": "测试模拟群0",
+						"shareName": "aE7tBOan7kCAdaWLVscA12TnEjCl361Zy7AlTwGPXiA@cr4dev",
+						"shareKey": "z_qcrLGP9McEtO4iqSJ_7-XhdQafYfNjC4ArliUzY0mLfSNt2Vxg3qLhwo1cQ_njnF4H_NYFrr9hedtdu7lKuQ~~"
+					}
+				},
+				{
+					"id": 1,
+					"name": "从小程序码进入(就业助手)",
+					"pathName": "pages/textualAssistant/textualAssistant",
+					"query": "pid=1",
+					"scene": "1047"
+				},
+				{
+					"id": 2,
+					"name": "从小程序码进入，带参数",
+					"pathName": "pages/index/index",
+					"query": "id=6&url=http://baidu.com",
+					"scene": "1047"
+				},
+				{
+					"id": -1,
+					"name": "从小程序码进入(课程列表)",
+					"pathName": "pages/courseList/courseList",
+					"query": "pid=2",
+					"scene": "1047"
+				},
+				{
+					"id": -1,
+					"name": "从小程序码进入(ai面试官)",
+					"pathName": "pages/aiInterviewer/aiInterviewer",
+					"query": "pid=3",
+					"scene": "1047"
+				}
+			]
+		}
+	}
+}

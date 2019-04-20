@@ -1,0 +1,6 @@
+{
+  "navigationBarTitleText": "面试挑战记录",
+  "usingComponents": {
+    "radioSuspension": "../common/radio/radio"
+  }
+}

@@ -1,0 +1,106 @@
+<!--pages/myGiftVoucher/myGiftVoucher.wxml-->
+<view class='headerNav'>
+  <view class='{{_index == 0 ? "navChild selectNav" : "navChild"}}' bindtap='navSelectFun' data-index='0'>未使用</view>
+  <view class='{{_index == 1 ? "navChild selectNav" : "navChild"}}' bindtap='navSelectFun' data-index='1'>已使用</view>
+  <view class='{{_index == -1 ? "navChild selectNav" : "navChild"}}' bindtap='navSelectFun' data-index='-1'>已过期</view>
+</view>
+<!--未使用  -->
+<view class='wei'>
+  <view wx:if="{{couponsList.length != 0}}">
+    <view class='ticket' wx:for="{{couponsList}}" wx:key="{{index}}">
+      <image src='../img/ticketbg.png' mode='aspectFill' class='ticketbg'></image>
+      <view class='ticketTxt'>
+        <view class='top'>
+          <view class='left'>
+            <view class='tiT1'><text class='money'>{{item.coupon_value}}</text>元({{item.coupon_name}})</view>
+            <view class='tiT1'>有效期：{{item.effective_time}}-{{item.failure_time}}</view>
+          </view>
+          <view class='right'>
+            <view class='use' wx:if="{{_index == 0}}">立即使用</view>
+            <view class='use' wx:if="{{_index == 1}}">已使用</view>
+            <view class='use' wx:if="{{_index == -1}}">已过期</view>
+          </view>
+        </view>
+        <view class='bottom'>
+          使用范围：{{item.description}}
+        </view>
+      </view>
+      <view class='shadowbox' wx:if="{{_index == 1 || _index == -1}}"></view>
+    </view>
+    <!-- <view class='ticket'>
+      <image src='../img/ticketbg.png' mode='aspectFill' class='ticketbg'></image>
+      <view class='ticketTxt'>
+        <view class='top'>
+          <view class='left'>
+            <view class='tiT1'><text class='money'>99</text>元(自然拼读99元优惠券)</view>
+            <view class='tiT1'>有效期：2018.9.18-2019.8.9</view>
+          </view>
+          <view class='right'>
+            <view class='use'>立即使用</view>
+          </view>
+        </view>
+        <view class='bottom'>
+          使用范围：指定课程
+        </view>
+      </view>
+    </view> -->
+  </view>
+  <view class='noticketbox' wx:else>
+    <image src='../img/f_icon26.png' mode='aspectFill' class='noimg'></image>
+    <view class='ntT1'>您还没有优惠券哦~</view>
+  </view>
+</view>
+<!--已使用  -->
+<!-- <view class='used' wx:if="{{_index == 2}}">
+  <view class='ticket'>
+    <image src='../img/ticketbg.png' mode='aspectFill' class='ticketbg'></image>
+    <view class='ticketTxt'>
+      <view class='top'>
+        <view class='left'>
+          <view class='tiT1'><text class='money'>99</text>元(自然拼读99元优惠券)</view>
+          <view class='tiT1'>有效期：2018.9.18-2019.8.9</view>
+        </view>
+        <view class='right'>
+          <view class='use'>已使用</view>
+        </view>
+      </view>
+      <view class='bottom'>
+        使用范围：指定课程
+      </view>
+    </view>
+    <view class='shadowbox'></view>
+  </view>
+  <view class='noticketbox'>
+    <image src='../img/f_icon26.png' mode='aspectFill' class='noimg'></image>
+    <view class='ntT1'>您还没有优惠券哦~</view>
+  </view>
+</view> -->
+<!--已过期  -->
+<!-- <view class='expired' wx:if="{{_index == 3}}">
+  <view class='ticket'>
+    <image src='../img/ticketbg.png' mode='aspectFill' class='ticketbg'></image>
+    <view class='ticketTxt'>
+      <view class='top'>
+        <view class='left'>
+          <view class='tiT1'><text class='money'>99</text>元(自然拼读99元优惠券)</view>
+          <view class='tiT1'>有效期：2018.9.18-2019.8.9</view>
+        </view>
+        <view class='right'>
+          <view class='use'>已过期</view>
+        </view>
+      </view>
+      <view class='bottom'>
+        使用范围：指定课程
+      </view>
+    </view>
+  </view>
+  <view class='noticketbox'>
+    <image src='../img/f_icon26.png' mode='aspectFill' class='noimg'></image>
+    <view class='ntT1'>您还没有优惠券哦~</view>
+  </view>
+</view> -->
+<radioSuspension wx:if="{{isShow}}" id="radio"
+  bind:pauseEvent="_pauseEvent"
+  bind:playEvent="_playEvent"
+  isplay='{{isplay}}'
+></radioSuspension>

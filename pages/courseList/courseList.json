@@ -1,0 +1,7 @@
+{
+  "navigationBarTitleText": "求职课堂",
+  "usingComponents": {
+    "radioSuspension": "../common/radio/radio",
+    "login": "../common/login/login"
+  }
+}

@@ -1,0 +1,14 @@
+<!--pages/aiAnswerError/aiAnswerError.wxml-->
+<image src='../img/banner8.jpg' mode='aspectFill' class='banner'></image>
+<view class='errbox'>
+  <view class='icon'></view>
+  <view class='errT1'>你的语音回答中包含了不当用词</view>
+  <view class='errT1'>请重新作答</view>
+  <view class='errT1'>并注意遵循相关法律法规</view>
+  <view class='backbtn' bindtap='goBackFun'>返回</view>
+</view>
+<radioSuspension wx:if="{{isShow}}" id="radio"
+  bind:pauseEvent="_pauseEvent"
+  bind:playEvent="_playEvent"
+  isplay='{{isplay}}'
+></radioSuspension>

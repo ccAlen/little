@@ -1,0 +1,7 @@
+{
+  "navigationBarTitleText": "编辑工作经历",
+  "usingComponents": {
+    "date-picker": "../common/date-picker/date-picker",
+    "radioSuspension": "../common/radio/radio"
+  }
+}

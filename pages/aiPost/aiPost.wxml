@@ -1,0 +1,47 @@
+<!--pages/aiPost/aiPost.wxml-->
+<view class='mainbox'>
+  <view class='leftbox'>
+    <!-- <view class='nav naved' bindtap='selectClassFun'>运营岗</view> -->
+    <view class='{{selected == item.id ? "nav naved" : "nav"}}' bindtap='selectClassFun' wx:for="{{professionList}}" wx:key="{{index}}" data-id='{{item.id}}'>{{item.cat_name}}</view>
+  </view>
+  <view class='rightbox'>
+    <!--运营岗  -->
+    <view class='content'>
+      <view class='typebox' wx:for="{{postList}}" wx:key="{{index}}">
+        <view class='aT1'>{{item.cat_name}}</view>
+        <view class='flex_parent'>
+          <!-- <view class='flex_child selected'>活动运营</view> -->
+          <view class='{{postselected == postItem.id ? "flex_child selected" : "flex_child"}}' wx:for="{{item.professions}}" wx:for-item="postItem" wx:for-index="postIndex" wx:key="{{postIndex}}" data-postid='{{postItem.id}}' bindtap='postSelectFun'>{{postItem.prof_name}}</view>
+        </view>
+      </view>
+      <!-- <view class='typebox'>
+        <view class='aT1'>运营部</view>
+        <view class='flex_parent'>
+          <view class='flex_child'>活动运营</view>
+          <view class='flex_child'>活动运营</view>
+          <view class='flex_child'>活动运营</view>
+          <view class='flex_child'>活动运营</view>
+          <view class='flex_child'>活动运营</view>
+        </view>
+      </view> -->
+    </view>
+  </view>
+</view>
+<view class='shadowbox' wx:if="{{shadowshow}}">
+  <view class='blackbox' bindtap='closeFun'></view>
+  <view class='centerbox'>
+    <view class='p1' wx:for="{{descriptionList}}" wx:key="{{index}}" wx:if="{{index == 0}}">{{item}}</view>
+    <view class='p2' wx:for="{{descriptionList}}" wx:key="{{index}}" wx:if="{{index != 0}}">{{item}}</view>
+    <!-- <view class='p2'>运营策划实施能力</view>
+    <view class='p2'>数据分析能力</view>
+    <view class='p2'>逻辑思维</view>
+    <view class='p2'>创新思维</view> -->
+    <!-- <view class='p2'>{{postDetails.notice}}</view> -->
+    <view class='readybtn' bindtap='readygoFun'>已准备好，马上面试</view>
+  </view>
+</view>
+<radioSuspension wx:if="{{isShow}}" id="radio"
+  bind:pauseEvent="_pauseEvent"
+  bind:playEvent="_playEvent"
+  isplay='{{isplay}}'
+></radioSuspension>

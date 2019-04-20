@@ -1,0 +1,94 @@
+<!--index.wxml-->
+<wxs module="filter" src="../../utils/secondToDate.wxs"></wxs>
+<view class='contain'>
+  <swiper indicator-dots="true"
+  autoplay="true" indicator-color='rgba(255,192,0,0.3)' indicator-active-color='rgba(255,192,0,1)'>
+  <block wx:for="{{imgUrls}}" wx:key="{{index}}">
+    <swiper-item>
+      <navigator url="{{item.show_type == 1 ? item.show_url : ''}}">
+        <image src="{{item.img_uri}}" mode='aspectFill' class='banner'/>
+      </navigator>
+    </swiper-item>
+  </block>
+</swiper>
+  <view class='navbox'>
+    <navigator url='../textualAssistant/textualAssistant' class='nav_child'>
+      <view class='nav-icon_box'>
+        <image src='../img/icon1.png' mode='aspectFill' class='icon1'></image>
+      </view>
+      <view class='navTxt'>就业助手</view>
+    </navigator>
+    <navigator url='../courseList/courseList' class='nav_child'>
+      <view class='nav-icon_box'>
+        <image src='../img/icon3.png' mode='aspectFill' class='icon1'></image>
+      </view>
+      <view class='navTxt'>求职课堂</view>
+    </navigator>
+    <navigator url='../aiInterviewer/aiInterviewer' class='nav_child'>  
+      <view class='nav-icon_box'>
+        <image src='../img/icon2.png' mode='aspectFill' class='icon1'></image>
+      </view>
+      <view class='navTxt'>AI面试官</view>
+    </navigator>
+  </view>
+  <view class='module'>
+    <view class='module_title'>
+      热门资讯
+      <navigator url='../newsList/newsList' class='more_icon'></navigator>
+    </view>
+    <navigator url='{{"../newsDetails/newsDetails?id=" + item.id}}' data-id='{{item.id}}' class='hot_module' wx:for="{{hotNewsList}}" wx:key="{{item.id}}">
+      <view class='hot_left'>
+        <view class='hlT1'>{{item.title}}</view>
+        <view class='hlT2'>{{item.description}}</view>
+      </view>
+      <view class='hot_right'>
+        <image class='hotimg'  src='{{item.thumb_img}}' mode='aspectFill'></image>
+      </view>
+    </navigator>
+  </view>
+  <view class='module' style='margin-bottom:0'>
+    <view class='module_title'>
+      课程推荐
+    </view>
+    <view class='recommend_module' wx:for="{{recommend}}" wx:key="item.id">
+      <view class='recommend_left'>
+        <image class='peopleimg' src='{{item.cover_img}}' mode='aspectFill'></image>
+        <view class='xianshi' wx:if="{{item.share_unlock == 1}}"></view>
+      </view>
+      <navigator url="{{'../courseDetails/courseDetails?courseid=' + item.id + '&into=1'}}" data-courseid="{{item.id}}" class='recommend_right'>
+        <view class='rlT1'>{{item.title}}<view class='jobMarket'>{{item.category.name}}</view></view>
+        <view class='rlT2'>
+          <view class='name'>{{item.user.name}}</view>
+          {{item.user.lecturer_title}}
+        </view>
+        
+        <view class='recommend_bottom'>
+          <view class='time'>{{filter.secondToDate(item.duration)}}分钟</view>
+          <view class='num'>{{item.study_count}}人在学</view>
+          <view class='price' wx:if="{{item.share_unlock == 0}}"><view class='grayprice' wx:if="{{item.original_price != item.current_price}}">￥{{item.original_price}}</view>￥{{item.current_price}}</view>
+          <view class='price' wx:if="{{item.share_unlock == 1}}">￥0</view>
+        </view>
+      </navigator>
+    </view>
+    <view wx:if="{{showMore}}">
+    <navigator url='../courseList/courseList' class='moreList'>查看更多...</navigator>
+    </view>
+  </view>
+</view>
+<view class='getphoneBoom' wx:if="{{showGetPhone}}">
+  <view class='shadowbox'>
+    <view class='mainbox'>
+      <view class='buytipstxt'>请授权手机号</view>
+      <view class='btnbox'>
+        <button open-type="getPhoneNumber" bindgetphonenumber="getPhoneNumber" class='btn_child sure'>我知道了</button>
+      </view>
+    </view>
+  </view>
+</view>
+<login id="dialog" wx:if="{{showLogin}}" bind:getKey="getKey"></login>
+<!-- <getphone wx:if="{{showGetPhone}}" bind:getPhone="getPhone"></getphone> -->
+<radioSuspension wx:if="{{isShow}}" id="radio"
+  bind:pauseEvent="_pauseEvent"
+  bind:playEvent="_playEvent"
+  isplay='{{isplay}}'
+></radioSuspension>

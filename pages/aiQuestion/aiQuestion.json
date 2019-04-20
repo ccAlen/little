@@ -1,0 +1,6 @@
+{
+  "navigationBarTitleText": "测试题",
+  "usingComponents": {
+    "radioSuspension": "../common/radio/radio"
+  }
+}

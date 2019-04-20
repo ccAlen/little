@@ -1,0 +1,106 @@
+<!--pages/center/center.wxml-->  
+<view class='header borderTop'>
+  <view class='portrait'>
+    <image src='{{userInfo.avatar}}' class='headeravatar'></image>
+  </view>
+  <view class='text-container'>
+    <view class='name'>{{userInfo.name}}</view>
+    <view class='info'>点击查看或编辑个人信息</view>
+  </view>
+  <view class='note' bindtap='tipsLink'>
+    <icon class='icon icon_note'></icon>提醒
+    <text class='d' wx:if="{{userInfo.unread && (userInfo.unread > 0)}}"></text>
+    <icon class='icon icon_right_arrow'></icon>
+  </view>
+  <view class='bainji_emptybox' bindtap='editFun'></view>
+</view>
+<view class='hr'></view>
+<view class="task list-mod">
+  <view class='title'>福利任务</view>
+  <view class='list'>
+    <view class='list-item'>
+      <icon class='icon icon_sign'></icon>
+      <view class='text-container'>
+        <view class='t'>每日签到</view>
+        <view class='desc'>每日签到开宝箱，连续7天抽大奖</view>
+      </view>
+      <view class='right-container' bindtap='signIn'>
+        <view class='{{sign ? "buttonsign" : "button"}}'>{{sign ? "已签到" : "签到"}}</view>
+      </view>
+    </view>
+   <!-- <view class='list-item'>
+      <icon class='icon icon_lucky'></icon>
+      <view class='text-container'>
+        <view class='t'>第七天新人大礼</view>
+        <view class='desc'>第七天可领取100金币</view>
+      </view>
+      <view class='right-container'>
+        <view class='button'>领取</view>
+      </view>
+    </view>
+    <view class='list-item'>
+      <icon class='icon icon_book'></icon>
+      <view class='text-container'>
+        <view class='t'>好好学习 天天向上</view>
+        <view class='desc'>每累计2小时学习时间即送</view>
+      </view>
+      <view class='right-container'>
+        <view class='precision-container'>
+          <view class='text'>45%</view>
+          <view class='precision'>
+            <view class='bar' style='width:45%'></view>
+          </view>
+        </view>
+      </view>
+    </view>-->
+  </view>
+</view>
+<view class='hr'></view>
+<view class='list-mod bottom-list'>
+  <!--<view class='list-item'>
+    <icon class='icon icon_wallet'></icon>
+    <view class='text-container'>
+      <view class='t'>我的钱包</view>
+    </view>
+    <view class='right-container'>¥0.00</view>
+  </view>-->
+  <view class='list-item' bindtap='goldDetailLink'>
+    <icon class='icon icon_gold'></icon>
+    <view class='text-container'>
+      <view class='t'>我的金币</view>
+    </view>
+    <view class='right-container'>{{userInfo.coin_number}}</view>
+  </view>
+  <view class='list-item' bindtap='myGiftVoucherLink'>
+    <icon class='icon icon_coupon'></icon>
+    <view class='text-container'>
+      <view class='t'>我的礼券</view>
+    </view>
+  </view>
+  <view class='list-item'>
+    <icon class='icon icon_recommend'></icon>
+    <view class='text-container'>
+      <view class='t'>推荐我们</view>
+    </view>
+    <button class='sharebtn' open-type="share" plain="true"></button>
+  </view>
+  <!--<view class='list-item'>
+    <icon class='icon icon_lecturer'></icon>
+    <view class='text-container'>
+      <view class='t'>讲师申请</view>
+    </view>
+    <view class='right-container'><icon class='icon icon_hot'></icon></view>
+  </view>-->
+  <view class='list-item' bindtap='suggestionLink'>
+    <icon class='icon icon_feedback'></icon>
+    <view class='text-container'>
+      <view class='t'>反馈建议</view>
+    </view>
+  </view>
+</view>
+<login id="dialog" wx:if="{{showLogin}}" bind:getKey="getKey"></login>
+<radioSuspension wx:if="{{isShow}}" id="radio"
+  bind:pauseEvent="_pauseEvent"
+  bind:playEvent="_playEvent"
+  isplay='{{isplay}}'
+></radioSuspension>

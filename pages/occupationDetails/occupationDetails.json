@@ -1,0 +1,6 @@
+{
+  "navigationBarTitleText": "职业详情",
+  "usingComponents": {
+    "radioSuspension": "../common/radio/radio"
+  }
+}

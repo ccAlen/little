@@ -1,0 +1,19 @@
+/* pages/suggestedResults/suggestedResults.wxss */
+.suggestedHeader{
+  font-size: 36rpx;
+  color: #fff;
+  background: #ffc000;
+  padding: 36rpx 5%;
+  box-sizing: border-box;
+  text-align: center;
+}
+.srT1{
+  font-size: 30rpx;
+  color: #666;
+  line-height: 55rpx;
+}
+.emptybox{
+  display: block;
+  background: #fff;
+  height: 50rpx;
+}

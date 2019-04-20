@@ -1,0 +1,118 @@
+/* pages/myGiftVoucher/myGiftVoucher.wxss */
+.headerNav{
+  padding: 0 5%;
+  box-sizing: border-box;
+}
+.navChild{
+  font-size: 32rpx;
+  margin-right: 70rpx;
+  padding: 20rpx 0;
+  display: inline-block;
+  color: #999;
+}
+.selectNav{
+  color: #333;
+  border-bottom: 2px solid #ffae17;
+}
+.wei,.used,.expired{
+  padding: 30rpx 5%;
+  box-sizing: border-box;
+}
+.ticket{
+  position: relative;
+  box-shadow: 0 10rpx 55rpx 8rpx #e5efff;
+  margin-bottom: 50rpx;
+}
+.ticketbg{
+  display: block;
+  width: 679rpx;
+  height: 275rpx;
+}
+.ticketTxt{
+  position: absolute;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+}
+.top{
+  height: 190rpx;
+  width: 100%;
+  display: box;
+  display: -webkit-box;
+}
+.bottom{
+  height: 85rpx;
+  display: -webkit-flex;
+  display: flex;
+  -webkit-align-items: center;
+  align-items: center;
+  padding: 0 40rpx;
+  box-sizing: border-box;
+  font-size: 25rpx;
+  color: #ffac18;
+}
+.left{
+  -webkit-box-flex: 1;
+  box-flex:1;
+  width: 68%;
+  padding: 8rpx 10rpx 0 40rpx;
+}
+.right{
+  -webkit-box-flex: 1;
+  box-flex:1;
+  width: 32%;
+  display: -webkit-flex;
+display: flex;
+-webkit-align-items: center;
+align-items: center;
+-webkit-justify-content: center;
+justify-content: center;
+}
+.use{
+  display: inline-block;
+  font-size: 24rpx;
+  width: 160rpx;
+  height: 60rpx;
+  line-height: 60rpx;
+  text-align: center;
+  border: 1px solid #fff;
+  border-radius: 100rpx;
+  color: #fff;
+}
+.tiT1{
+  font-size: 25rpx;
+  color: #fff;
+}
+.money{
+  font-size: 88rpx;
+  color: #fff;
+}
+.shadowbox{
+  position: absolute;
+  top:0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  z-index: 9;
+  background: rgba(255, 255, 255, 0.6)
+}
+.noticketbox{
+  padding: 150rpx 5%;
+  text-align: center;
+  box-sizing: border-box;
+}
+.noimg{
+  display: inline-block;
+  width: 345rpx;
+  height: 345rpx;
+}
+.ntT1{
+  font-size: 25rpx;
+  color: #999;
+  padding: 30rpx 0;
+}
+.expired .use{
+  color: #999;
+  border: 1px solid #999;
+}

@@ -1,0 +1,8 @@
+<!--pages/common/radio/radio.wxml-->
+<view class='radiocontent' wx:if="{{isShow}}">
+  <view class='rLeft' bindtap='broadcastLink'><image src='{{img}}' mode='aspectFill' class='teacherimg'></image></view>
+  <view wx:if="{{isplay == 'pause'}}" class='rCenter pause' bindtap="playAudio"></view>
+  <view wx:else class='rCenter play' bindtap="pauseAudio"></view>
+  <view class='rRight' bindtap='close'></view>
+</view>
+<slot></slot>

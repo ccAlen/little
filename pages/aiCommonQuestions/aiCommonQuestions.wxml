@@ -1,0 +1,40 @@
+<!--pages/aiPost/aiPost.wxml-->
+<import src="/towxml/entry.wxml"/>
+<view class='mainbox'>
+  <view class='leftbox'>
+    <!-- <view class='nav naved' bindtap='selectClassFun'>运营岗</view> -->
+    <view class='{{selected == item.id ? "nav naved" : "nav"}}' bindtap='selectClassFun' wx:for="{{skillList}}" wx:key="{{index}}" data-id='{{item.id}}'>{{item.cat_name}}</view>
+  </view>
+  <view class='rightbox'>
+    <!--运营岗  -->
+    <view class='content' wx:if="{{skillDetailshow == 'list'}}">
+      <view class='typebox'>
+        <view class='flex_parent'>
+          <view class='{{postselected == item.id ? "flex_child selected" : "flex_child"}}' wx:for="{{postList}}" wx:key="{{index}}" data-postid='{{item.id}}' bindtap='postSelectFun'>{{item.title}}</view>
+        </view>
+      </view>
+    </view>
+    <view class='skillDetail' wx:else><template is="entry" data="{{...article}}"/> </view>
+  </view>
+</view>
+<view class='bottomNav'>
+  <view class='bottomNav_child' bindtap='aiIndex'>
+    <view class='icon c1'></view>
+    <view class='navtxt'>Ai面试官</view>
+  </view>
+  <view class='bottomNav_child navselected' bindtap='aiQuestions'>
+    <view class='icon c2'></view>
+    <view class='navtxt'>常见试题</view>
+  </view>
+  <view class='bottomNav_child' bindtap='aiRecord'>
+    <view class='icon c3'></view>
+    <view class='navtxt'>面试记录</view>
+  </view>
+</view>
+<view class="comebackFun" bindtap='comebackFun' wx:if="{{backicon}}"></view>
+<view class='emptybox12'></view>
+<radioSuspension wx:if="{{isShow}}" id="radio"
+  bind:pauseEvent="_pauseEvent"
+  bind:playEvent="_playEvent"
+  isplay='{{isplay}}'
+></radioSuspension>

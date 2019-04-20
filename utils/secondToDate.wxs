@@ -1,0 +1,11 @@
+var filter = {
+  secondToDate: function (result) {
+    /*var h = Math.floor(result / 3600) < 10 ? '0' + Math.floor(result / 3600) : Math.floor(result / 3600);*/
+    var m = Math.floor((result / 60 )) ;
+    /* var s = Math.floor((result % 60)) < 10 ? '0' + Math.floor((result % 60)) : Math.floor((result % 60));*/
+    return m;
+  }
+}
+module.exports = {
+  secondToDate: filter.secondToDate
+}

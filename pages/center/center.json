@@ -1,0 +1,7 @@
+{
+  "navigationBarTitleText": "账号",
+  "usingComponents": {
+    "radioSuspension": "../common/radio/radio",
+    "login": "../common/login/login"
+  }
+}

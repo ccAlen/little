@@ -1,0 +1,194 @@
+/* pages/occupationEvaluation/occupationEvaluation.wxss */
+/* @import "../center/center.wxss"; */
+page{
+  border-top: 1px solid #e0e0e0;
+}
+ .reportHeader{
+   font-size: 40rpx;
+   font-weight: bold;
+   text-align: center;
+   padding: 44rpx 0;
+ }
+ .case{
+   font-size: 30rpx;
+   color: #ffc000;
+   padding-top: 30rpx;
+ }
+ .part{
+   background: #282828;
+   padding: 16rpx 50rpx 24rpx;
+   font-size: 46rpx;
+   color: #fff;
+   display: inline-block;
+ }
+ .partName{
+   font-size: 30rpx;
+   font-weight: normal;
+   margin-top: -5rpx;
+ }
+ .partContent{
+   padding: 50rpx 4%;
+   box-sizing: border-box;
+ }
+ .pcLT1{
+   font-size: 36rpx;
+   color: #333;
+   padding-left: 52rpx;
+   position: relative;
+ }
+  .pcLT1 text{
+    font-size: 50rpx;
+    position: absolute;
+    left: 0;
+    top: -8rpx;
+  }
+  .pcLT2{
+    font-size: 30rpx;
+    color: #999;
+    line-height: 55rpx;
+    padding-top: 10rpx;
+  }
+  .txtList{
+    padding-bottom: 40rpx;
+  }
+  .tsT1{
+    font-size: 40rpx;
+    text-align: center;
+    padding: 15rpx 0;
+    position: relative;
+    margin-bottom: 20rpx;
+  }
+.tsT1::before{
+  content: '';
+  display: inline-block;
+  width: 90rpx;
+  height: 2px;
+  background: #000;
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  margin-left: -45rpx;
+}
+.chart-iframe{
+  position: relative;
+}
+.shadow{
+  background:#fff;
+  height:62rpx;
+  position:absolute;
+  top:0;
+  left:0;
+  width:100%;
+  z-index: 99;
+}
+.labelbox{
+  text-align: center;
+  padding: 40rpx 0 60rpx;
+}
+.label{
+  display: inline-block;
+  font-size: 22rpx;
+  color: #666;
+  padding-left: 48rpx;
+  position: relative;
+}
+.label::before{
+  content: '';
+  display: inline-block;
+  width: 38rpx;
+  height: 22rpx;
+  background: #ffc000;
+  position: absolute;
+  left: 0;
+  top: 5rpx;
+}
+.barBox{
+  padding: 0 4%;
+  box-sizing: border-box;
+}
+.barTxt{
+  font-size: 36rpx;
+  color: #333;
+}
+.barTxt text{
+  color: #55b387;
+  font-size: 50rpx;
+  float: right;
+  margin-top:-9rpx;
+}
+.precision {
+  height:40rpx;
+background:#dddddd;
+border-radius:10rpx;
+overflow:hidden;
+width: 100%;
+}
+.bar {
+height:40rpx;
+background:#ffc000;
+}
+.singular .bar{
+  background: #333;
+}
+.dual .bar{
+  background: #ffc000;
+}
+.barList{
+  padding: 15rpx 0;
+}
+.reportResults{
+  padding: 40rpx 4%;
+  box-sizing: border-box;
+}
+.rrmT1{
+  font-size: 36rpx;
+  color: #000;
+  text-align: center;
+  padding: 40rpx 0;
+}
+.rrmT2{
+  font-size: 30rpx;
+  color: #333;
+  text-align: left;
+  line-height: 55rpx;
+}
+.padtb1{
+  padding: 0 0 80rpx;
+}
+.padtb2{
+  padding: 40rpx 0 0rpx;
+}
+.matT1{
+  margin-top: 40rpx;
+}
+.zsTips{
+  text-align: center;
+  padding: 40rpx 0;
+  color: #999;
+  font-size: 30rpx;
+}
+.zsTips text{
+  padding-top: 20rpx;
+}
+.shareTips{
+  color: #ffc000;
+  font-size: 26rpx;
+  text-align: center;
+  padding: 20rpx 0;
+}
+.weixinicon{
+  width: 100rpx;
+  height: 100rpx;
+  display: inline-block;
+  margin: 30rpx 0;
+}
+.share{
+  text-align: center;
+  padding: 60rpx 4%;
+  box-sizing: border-box;
+  border-top: 1px solid #f5f5f5;
+}
+.shT{
+  font-size: 26rpx;
+  color: #000;
+}

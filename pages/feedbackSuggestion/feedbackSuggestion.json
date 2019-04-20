@@ -1,0 +1,6 @@
+{
+  "navigationBarTitleText": "反馈建议",
+  "usingComponents": {
+    "radioSuspension": "../common/radio/radio"
+  }
+}

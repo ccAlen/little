@@ -1,0 +1,26 @@
+<!--pages/tipsList/tipsList.wxml-->  
+<view class='tipsContent' wx:if="{{tipsList.length > 0}}">
+  <view class='tipsList' bindtap='tipsDetailsLink' data-id='{{item.id}}' wx:for="{{tipsList}}" wx:key="{{index}}">
+    <view class='tipsName'>{{item.title}}<text class='tipstime'>{{item.sent_at}}</text></view>
+    <view class='tipsTxt'>{{item.text}}</view>
+  </view>
+  <!-- <view class='tipsList'>
+    <view class='tipsName'>用足球为祖国打CALL用足球为祖国打CALL用足球为祖国打CALL<text class='tipstime'>06-02 00:50</text></view>
+    <view class='tipsTxt'>
+    尽管世界杯还没有结束，球迷们已经可以提前宣布今年的东道主俄罗斯尽管世界杯还没有结束尽管世界杯还没有结束，球迷们已经可以提前宣布今年的东道主俄罗斯尽管世界杯还没有结束
+    </view>
+  </view>
+  <view class='tipsList'>
+    <view class='tipsName'>用足球为祖国打CALL用足球为祖国打CALL用足球为祖国打CALL<text class='tipstime'>06-02 00:50</text></view>
+    <view class='tipsTxt'>
+    尽管世界杯还没有结束，球迷们已经可以提前宣布今年的东道主俄罗斯尽管世界杯还没有结束尽管世界杯还没有结束，球迷们已经可以提前宣布今年的东道主俄罗斯尽管世界杯还没有结束
+    </view>
+  </view> -->
+  <view class='eddView'>已经到尽头啦~~</view>
+</view>
+<view class='nothing' wx:else>暂时没有消息哟~</view>
+<radioSuspension wx:if="{{isShow}}" id="radio"
+  bind:pauseEvent="_pauseEvent"
+  bind:playEvent="_playEvent"
+  isplay='{{isplay}}'
+></radioSuspension>

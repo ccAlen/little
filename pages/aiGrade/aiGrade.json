@@ -1,0 +1,6 @@
+{
+  "navigationBarTitleText": "答题评分", 
+  "usingComponents": {
+    "radioSuspension": "../common/radio/radio"
+  }
+}

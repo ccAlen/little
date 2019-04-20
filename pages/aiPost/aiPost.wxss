@@ -1,0 +1,122 @@
+/* pages/aiPost/aiPost.wxss */
+.mainbox{
+  position: relative;
+  padding-left: 185rpx;
+  box-sizing: border-box;
+}
+.leftbox{
+  width: 185rpx;
+  height: 100%;
+  position: fixed;
+  background: #f5f5f5;
+  left: 0;
+  top: 0;
+  text-align: center;
+  overflow-y: scroll;
+  /* -webkit-overflow-scrolling: touch; */
+}
+.rightbox{
+  padding: 0 5%;
+  box-sizing: border-box;
+  width: 100%;
+  overflow: hidden;
+}
+.typebox{
+  border-bottom: 1px solid #ddd;
+}
+.typebox:last-child{
+  border-bottom: 0;
+}
+.aT1{
+  font-size: 28rpx;
+  color: #666;
+  padding: 32rpx 0 5rpx;
+}
+.flex_parent{
+  display: flex;
+  display: -webkit-flex;
+  padding: 20rpx 0;
+  flex-wrap:wrap;
+}
+.flex_child{
+  box-flex: 1;
+  -webkit-box-flex: 1;
+  display: inline-block;
+  height: 70rpx;
+  line-height: 70rpx;
+  padding: 0 10rpx;
+  background: #f0f1f2;
+  font-size: 22rpx;
+  color: #000;
+  text-align: center;
+  margin-right: 25rpx;
+  margin-bottom: 25rpx;
+  overflow: hidden;
+  text-overflow:ellipsis;
+  white-space: nowrap;
+  width:45%;
+  box-sizing: border-box;
+}
+.nav{
+  font-size: 24rpx;
+  color: #888;
+  padding: 30rpx 0;
+}
+.naved{
+  color: #000;
+  background: #fff;
+  border-bottom: 1px solid #ddd;
+  border-left: 3px solid #ffc000;
+}
+.selected{
+  background: #ffefbf;
+  border: 1px solid #ffc000;
+}
+.shadowbox{
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  display: -webkit-flex;
+  display: flex;
+  -webkit-align-items: center;
+  align-items: center;
+  -webkit-justify-content: center;
+  justify-content: center;
+}
+.centerbox{
+  width: 80%;
+  text-align: center;
+  position: relative;
+}
+.p1{
+  font-size: 45rpx;
+  color: #fff;
+  font-weight: bold;
+  /* padding: 40rpx 0; */
+}
+.p2{
+  font-size: 32rpx;
+  color: #fff;
+  padding: 10rpx 0;
+  /* line-height: 60rpx; */
+  text-align: center;
+}
+.readybtn{
+  display:inline-block;
+  background:#fff;
+  border-radius:14rpx;
+  padding:28rpx 50rpx;
+  font-size:34rpx;
+  color:rgb(48, 183, 137);
+  margin-top:80rpx;
+}
+.blackbox{
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.7);
+}

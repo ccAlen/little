@@ -1,0 +1,6 @@
+{
+  "navigationBarTitleText": "提醒详情",
+  "usingComponents": {
+    "radioSuspension": "../common/radio/radio"
+  }
+}

@@ -1,0 +1,5 @@
+/* pages/addIntention/addIntention.wxss */
+page{
+  background: #f3f6f7;
+}
+ @import "../addEducation/addEducation.wxss";

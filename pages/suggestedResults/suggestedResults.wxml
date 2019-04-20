@@ -1,0 +1,29 @@
+<!--pages/suggestedResults/suggestedResults.wxml-->
+<view class='suggestedHeader'>环境管理体系认证（ISO14001）</view>
+<view class='module1'>
+  <view class='module_title'>简介</view>
+  <view class='srT1'>ISO 14001 是环境管理体系认证的代号。ISO 14000 系列标准是由国际标准化组织制订的环境管理体系标准。是针对全球性的环境污染和生态破坏越来越严重，臭氧层破坏、全球气候变暖、生物多样性的消失等重大环境问题威胁着人类未来生存和发展，顺应国际环境保护的需求，依据国际经济贸易发展的需要而制定的。</view>
+</view>
+<view class='module1'>
+  <view class='module_title'>通过率</view>
+  <view class='srT1'>2017年：5.4%</view>
+  <view class='srT1'>2016年：2.3%</view>
+  <view class='srT1'>2015年：6.2%</view>
+  <view class='srT1'>2014年：6.2%</view>
+</view>
+<view class='module1'>
+  <view class='module_title'>报考条件</view>
+  <view class='srT1'>1.具有中华人民共和国国籍：</view>
+  <view class='srT1'>2. 18周岁以上、35周岁以下（按报考时间计算），应届毕业硕士研究生和博士研究（非在职）年龄可放宽到40周岁以下(即按报考时间计算)；</view>
+  <view class='srT1'>3.拥护中华人民共和国宪法；</view>
+  <view class='srT1'>4.具有良好的品行；</view>
+  <view class='srT1'>5.具有正常履行职责的身体条件；</view>
+  <view class='srT1'>6.具有符合职位要求的工作能力；</view>
+  <view class='srT1'>7.具有大专以上文化程度；</view>
+</view>
+<view class='emptybox'></view>
+<radioSuspension wx:if="{{isShow}}" id="radio"
+  bind:pauseEvent="_pauseEvent"
+  bind:playEvent="_playEvent"
+  isplay='{{isplay}}'
+></radioSuspension>

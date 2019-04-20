@@ -1,0 +1,6 @@
+{
+  "navigationBarTitleText": "具体建议结果",
+  "usingComponents": {
+    "radioSuspension": "../common/radio/radio"
+  }
+}

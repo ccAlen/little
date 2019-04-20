@@ -1,0 +1,51 @@
+<!--pages/aiFinishedQuestions/aiFinishedQuestions.wxml-->
+<view class='main'>
+<!-- 从缓存中读取音频 -->
+  <view class='{{!item.sin ? "list" : "list1"}}' wx:for="{{audioList}}" wx:key="{{index}}" wx:if="{{entertype=='first'}}">
+    <view class='fqT1' wx:if="{{!item.sin}}">{{item._index}}、{{item.question}}</view>
+    <view class='radiobox'>
+      <!-- <view class='{{_index == item.index ? "radioBtn play" : "radioBtn stop"}}' bindtap='radioContral' data-index='{{item.index}}'></view> -->
+      <view class='radioBtn play' bindtap='radioContralplay' data-index='{{item.index}}' wx:if="{{_index == item.index && status == 'play'}}"></view>
+      <view class='radioBtn stop' bindtap='radioContralpause' data-index='{{item.index}}' wx:else></view>
+      <view class='radioslide'>
+          <view class='startTime'>{{_index == item.index ? '00:' + currentValue : '00:00'}}</view>
+          <slider class="sli" step="1" value="{{_index == item.index ? value : '0'}}" max="{{item.time}}" activeColor="#e1b63c" bindchange="slideBar" block-size="15" data-index='{{item.index}}'/>
+          <!-- <audio class="sli" controls="false" src="{{item.tempFilePath}}" id="myAudio"></audio> -->
+          <view class='endTime'>{{item.time >= 10 ? '00:' + item.time : '00:0' + item.time}}</view>
+      </view>
+    </view>
+  </view>
+  <!-- 从接口中读取音频 -->
+  <view class='list' wx:for="{{audioList}}" wx:key="{{index}}" wx:if="{{entertype=='second'}}">
+    <view class='fqT1' wx:if="{{!item.sin}}">{{item._index}}、{{item.question}}</view>
+    <view class='radiobox'>
+      <view class='{{(aa == index + "_0" && status == "play") ? "radioBtn play" : "radioBtn stop"}}' bindtap='radioContralplay_second' data-index='{{item.question_no}}' data-id='{{item.id}}' data-append='0' data-aa='{{index + "_0"}}'></view>
+      <view class='radioslide'>
+          <view class='startTime'>{{aa == index + "_0" ? '00:' + value : '00:00'}}</view>
+          <slider class="sli" step="1" value="{{aa == index + '_0' ? value : '0'}}" max="{{duration}}" activeColor="#e1b63c" bindchange="slideBar" block-size="15" data-index='{{item.index}}'/>
+          <!-- <view class='endTime'>{{aa == index + "_0" && duration ? '00:' + duration : '00:00'}}</view> -->
+          <view class='endTime'>{{item.duration ? '00:' + item.duration : '00:00'}}</view>
+      </view>
+    </view>
+    <view class='list2' wx:if="{{item.audio_file_append}}">
+      <view class='radiobox'>
+        <view class='{{(aa == index + "_1" && status == "play") ? "radioBtn play" : "radioBtn stop"}}' bindtap='radioContralplay_second' data-index='{{item.question_no}}' data-id='{{item.id}}' data-append='1' data-aa='{{index + "_1"}}'></view>
+        <view class='radioslide'>
+            <view class='startTime'>{{aa == index + "_1" ? '00:' + value : '00:00'}}</view>
+            <slider class="sli" step="1" value='{{aa == index + "_1" ? value : "0"}}' max="{{duration}}" activeColor="#e1b63c" bindchange="slideBar" block-size="15" data-index='{{item.index}}'/>
+            <!-- <view class='endTime'>{{aa == index + "_1" && duration ? '00:' + duration : '00:00'}}</view> -->
+            <view class='endTime'>{{item.append_duration ? '00:' + item.append_duration : '00:00'}}</view>
+        </view>
+      </view>
+    </view>
+  </view>
+  <view class='checkedbtn' wx:if="{{iscode}}">
+    <view class='checket' bindtap='checkResultFun'>马上查看面试结果</view>
+  </view>
+</view>
+<view class='emptybox100'></view>
+<radioSuspension wx:if="{{isShow}}" id="radio"
+  bind:pauseEvent="_pauseEvent"
+  bind:playEvent="_playEvent"
+  isplay='{{isplay}}'
+></radioSuspension>

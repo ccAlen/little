@@ -1,0 +1,81 @@
+{
+  "pages": [
+    "pages/index/index",
+    "pages/broadcast/broadcast",
+    "pages/occupationEvaluation/occupationEvaluation",
+    "pages/courseList/courseList",
+    "pages/record/record",
+    "pages/notes/notes",
+    "pages/courseDetails/courseDetails",
+    "pages/suggestedResults/suggestedResults",
+    "pages/textualAssistant/textualAssistant",
+    "pages/center/center",
+    "pages/textualAssistant_step/textualAssistant_step",
+    "pages/certificateDetails/certificateDetails",
+    "pages/newsDetails/newsDetails",
+    "pages/occupationDetails/occupationDetails",
+    "pages/common/login/login",
+    "pages/editMaterial/editMaterial",
+    "pages/tipsList/tipsList",
+    "pages/tipsDetails/tipsDetails",
+    "pages/addWork/addWork",
+    "pages/addEducation/addEducation",
+    "pages/addIntention/addIntention",
+    "pages/feedbackSuggestion/feedbackSuggestion",
+    "pages/goldDetail/goldDetail",
+    "pages/myGiftVoucher/myGiftVoucher",
+    "pages/common/radio/radio",
+    "pages/common/test/test",
+    "pages/aiInterviewer/aiInterviewer",
+    "pages/aiPost/aiPost",
+    "pages/aiQuestion/aiQuestion",
+    "pages/afs/afs",
+    "pages/aiGrade/aiGrade",
+    "pages/aiRecord/aiRecord",
+    "pages/aiAnswerError/aiAnswerError",
+    "pages/aiCommonQuestions/aiCommonQuestions",
+    "pages/order/order",
+    "pages/newsList/newsList",
+    "pages/courseHandouts/courseHandouts"
+  ],
+  "requiredBackgroundModes": [
+    "audio"
+  ],
+  "window": {
+    "backgroundTextStyle": "light",
+    "navigationBarBackgroundColor": "#fff",
+    "navigationBarTextStyle": "black"
+  },
+  "tabBar": {
+    "selectedColor": "#f4ba1c",
+    "list": [
+      {
+        "pagePath": "pages/index/index",
+        "text": "首页",
+        "iconPath": "pages/img/f_icon4.png",
+        "selectedIconPath": "pages/img/f_icon44.png",
+        "color": "#1d1d1d"
+      },
+      {
+        "pagePath": "pages/record/record",
+        "text": "记录",
+        "iconPath": "pages/img/f_icon5.png",
+        "selectedIconPath": "pages/img/f_icon55.png",
+        "color": "#1d1d1d"
+      },
+      {
+        "pagePath": "pages/center/center",
+        "text": "账号",
+        "iconPath": "pages/img/f_icon6.png",
+        "selectedIconPath": "pages/img/f_icon66.png",
+        "color": "#1d1d1d"
+      }
+    ]
+  },
+  "plugins": {
+    "WechatSI": {
+      "version": "0.1.0",
+      "provider": "wx069ba97219f66d99"
+    }
+  }
+}

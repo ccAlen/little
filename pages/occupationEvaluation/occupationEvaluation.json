@@ -1,0 +1,6 @@
+{
+  "navigationBarTitleText": "职业定位测评",
+  "usingComponents": {
+    "radioSuspension": "../common/radio/radio"
+  }
+}

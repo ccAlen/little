@@ -1,0 +1,6 @@
+{
+  "navigationBarTitleText": "答题有误",
+  "usingComponents": {
+    "radioSuspension": "../common/radio/radio"
+  }
+}

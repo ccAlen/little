@@ -1,0 +1,6 @@
+{
+  "navigationBarTitleText": "资讯列表",
+  "usingComponents": {
+    "radioSuspension": "../common/radio/radio"
+  }
+}

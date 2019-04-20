@@ -1,0 +1,2 @@
+/* pages/addWork/addWork.wxss */
+@import "../addEducation/addEducation.wxss";

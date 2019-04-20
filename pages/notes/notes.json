@@ -1,0 +1,6 @@
+{
+    "navigationBarTitleText": "考证及就业建议结果",
+    "usingComponents": {
+      "radioSuspension": "../common/radio/radio"
+    }
+}

@@ -1,0 +1,34 @@
+/* pages/goldDetail/goldDetail.wxss */
+.goldbox{
+  padding: 0 5%;
+  box-sizing: border-box;
+}
+.goldList{
+  border-bottom: 1px solid #ececec;
+  padding: 40rpx 0;
+  display: box;
+  display: -webkit-box;
+}
+.gl_child{
+  box-flex:1;
+  -webkit-box-flex: 1;
+}
+.glc1{
+  width: 65%;
+}
+.glc2{
+  width: 35%;
+  text-align: right;
+  font-size: 36rpx;
+  color: #000;
+  font-weight: bold;
+}
+.glT1{
+  font-size: 32rpx;
+  color: #000;
+}
+.glT2{
+  font-size: 24rpx;
+  color: #a2a2a2;
+  padding-top: 15rpx;
+}
